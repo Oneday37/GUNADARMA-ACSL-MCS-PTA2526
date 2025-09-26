@@ -13,4 +13,4 @@ Praktikum _Mobile Computing System_ (MCS) akan dilaksanakan selama 8 pertemuan d
 | BAB 5 | Thingspeak |
 | BAB 6 | Card Bridge (Backend - Golang) |
 | BAB 7 | Servo Controller (Backend - Golang) |
-| BAB 8 | Card Reader and Servo Controller |
+| BAB 8 | Card Reader & Servo Controller |
