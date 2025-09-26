@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "570572274785",
+    "project_id": "mcs-acsl",
+    "storage_bucket": "mcs-acsl.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570572274785:android:de87dbdb57e2c4f7183e20",
+        "android_client_info": {
+          "package_name": "com.example.mcs_bab_2"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArNH1FQqjWnqkyXpzrAqRGrnB75rOqm50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570572274785:android:f866ce3fbe94127e183e20",
+        "android_client_info": {
+          "package_name": "com.example.mcs_bab_3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArNH1FQqjWnqkyXpzrAqRGrnB75rOqm50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
