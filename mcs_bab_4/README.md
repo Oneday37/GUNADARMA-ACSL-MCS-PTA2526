@@ -31,7 +31,7 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 Application Programming Interface (API) merupakan sebuah mekanisme yang memungkinkan dua komponen perangkat lunak atau lebih untuk saling berkomunikasi dengan menggunakan protokol yang ada. Dalam pengembangan aplikasi, API berperan sebagai jembatan yang menghubungkan front end dan back end dalam proses pengembangan aplikasi. Front end akan mengirimkan permintaan data kepada back end melalui API, kemudian back end akan merespon permintaan tersebut dan mengirimkan data yang diminta oleh front end untuk ditampilkan ke layar aplikasi.
 <div align="center">
   <img width="651" height="308" alt="image" src="https://github.com/user-attachments/assets/065d147a-9ecd-4493-9855-59814eaf4a8f" />
-</div>
+</div> <br>
 
 Jika dianalogikan dalam sebuah sistem restoran, API diibaratkan sebagai waiter / pelayan, front end diibaratkan sebagai customer / pelanggan, dan back end diibaratkan sebagai chef. Pelanggan (front end) akan membaca menu yang telah disediakan oleh restoran tersebut, kemudian pelanggan akan memesan menu yang diinginkan. Setelah menerima menu yang diinginkan oleh pelanggan, waiters / pelayan (API) akan memberitahu menu yang diminta oleh pelanggan kepada chef (back end), dimana setelah menerima menu tersebut chef akan mulai memasak (server akan mencari data yang diminta). Setelah makanan jadi (data yang diminta telah didapatkan) chef akan mengirimkannya kembali kepada waiters / pelayan untuk dikirimkan kembali ke pelanggan
 ***
@@ -43,7 +43,7 @@ Berikut merupakan tampilan dari aplikasi yang akan dibentuk pada praktikum bab 4
   <img width="295" height="656" alt="image" src="https://github.com/user-attachments/assets/16d7994d-93f6-44f3-8e08-1deadbdf6fae" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img width="295" height="656" alt="image" src="https://github.com/user-attachments/assets/92c6a79b-2865-470b-9261-8735cf4278ae" />
-</div>
+</div> <br>
 
 **Penjelasan terkait bagaimana cara aplikasi bekerja akan diterangkan oleh asisten yang mengajar.**
 
