@@ -4,8 +4,8 @@ Modul Praktikum _Advanced Computer System Laboratory_ (ACSL) PTA 25/26
 
 Praktikum _Mobile Computing System_ (MCS) akan dilaksanakan selama 8 pertemuan dengan materi pembelajaran yang akan dijalankan adalah:
 
-| Pertemuan  | Materi Pembelajaran |
-| ------------- | ------------- |
+| Pertemuan | Materi Pembelajaran |
+| --------- | ------------- |
 | BAB 1 | Widget-Widget Dasar Pada Flutter |
 | BAB 2 | Dinamis UI |
 | BAB 3 | Authentication & Provider |
