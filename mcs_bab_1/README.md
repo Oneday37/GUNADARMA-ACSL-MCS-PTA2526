@@ -70,8 +70,8 @@ Untuk menggunakan berbagai jenis widget yang tersedia pada flutter, programmer p
 ***
 
 ### **1.4 PROSEDUR PRAKTIKUM**
-
 ### **1.4.1 Tampilan Aplikasi**
+Berikut merupakan tampilan dari aplikasi yang akan dibentuk pada praktikum bab 1.
 <div align="center">
   <img width="292" height="643" alt="image" src="https://github.com/user-attachments/assets/3842f3b0-c294-4dbf-bcdc-52ec802190d8" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -80,7 +80,9 @@ Untuk menggunakan berbagai jenis widget yang tersedia pada flutter, programmer p
 
 **Penjelasan terkait bagaimana cara aplikasi bekerja akan diterangkan oleh asisten yang mengajar.**
 
-#### **1.4.2 Implementasi Aplikasi**
+<br>
+
+### **1.4.2 Implementasi Aplikasi**
 Dalam mengimplementasikan tampilan dari desain aplikasi di atas, terdapat beberapa langkah yang harus dilewati terlebih dahulu agar proses praktikum dapat berjalan dengan lancar dan terselesaikan sesuai dengan apa yang dituju. Untuk membuat project flutter pada android studio, pilihlah menu New Flutter Project yang terdapat pada halaman utama android studio. Kemudian tentukanlah nama project dan tempat untuk menyimpan file project tersebut. Pastikan nama file diketik dengan format lowercase dan jika nama file lebih dari 1 kata, maka pisahkan dengan format snake_case.
 <div align="center">
   <img align="center" width="827" height="392" alt="image" src="https://github.com/user-attachments/assets/32988363-89d0-40a1-aa5b-99a3ba973a01" />
