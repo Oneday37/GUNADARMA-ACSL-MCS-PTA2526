@@ -31,6 +31,7 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 Pada praktikum MCS bab 2, praktikan akan diajarkan bagaimana caranya membuat sebuah aplikasi yang memiliki tampilan UI yang dinamis. Dinamis UI sendiri merupakan sebuah tampilan yang isi konten dari halaman tersebut dapat berubah-ubah secara otomatis, baik dari segi content, jumlah content yang ditampilkan, light mode atau dark mode, dan lain-lain. Pada praktikum kali ini, para praktikan akan membuat sebuah aplikasi daftar kucing, dimana jumlah data kucing yang ditampilkan bergantung pada data yang tersedia. Data tersebut dapat ditambahkan atau dikurangi sesuai dengan keinginan pengguna.
 
 Pada flutter, untuk membuat aplikasi yang memiliki tampilan dinamis terdapat 1 widget yang dapat digunakan, yakni widget ListView.builder(). Widget ini sama seperti widget ListView() yang digunakan pada bab praktikum sebelumnya. Namun, pada widget ini terdapat 1 properti tambahan, yakni properti itemCount: yang akan merender content aplikasi berdasarkan banyaknya nilai yang diinput pada properti tersebut.
+***
 
 ### **2.4 PROSEDUR PRAKTIKUM**
 ### **2.4.1 Tampilan Aplikasi**
