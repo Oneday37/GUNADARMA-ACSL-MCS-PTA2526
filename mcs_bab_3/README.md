@@ -33,7 +33,7 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 Authentication merupakan sebuah proses untuk memvalidasi atau memverifikasi identitas dari seseorang sebelum nantinya pengguna tersebut dapat menggunakan layanan dari sebuah aplikasi atau sistem. Authentication merupakan hal yang sangat penting dalam pengembangan sebuah aplikasi atau sistem, karena dengan adanya sistem authentication keamanan dari sebuah aplikasi atau sistem menjadi meningkat. Sistem ini akan memastikan bahwa hanya pengguna yang berwewenang saja yang dapat masuk dan menggunakan layanan dari sebuah aplikasi atau sistem. Pada aplikasi atau sistem dengan skala besar, authentication merupakan suatu layanan yang wajib digunakan untuk menjaga keamanan data, mencegah terjadinya penyalahgunaan akun, dan juga digunakan untuk melindungi informasi pribadi pengguna.
 <div align="center">
   <img width="587" height="426" alt="image" src="https://github.com/user-attachments/assets/ca00e38e-9a0c-43c8-b06c-06bdd171369f" />
-</div>
+</div> <br>
 
 Cara kerja dari sistem authentication dapat dilihat pada ilustrasi gambar di atas. Pengguna akan memasukkan id (email atau username) dan password yang telah dibuat sebelumnya ke dalam field yang telah disediakan oleh aplikasi atau sistem. Selanjutnya sistem akan melakukan validasi atau verifikasi terhadap data tersebut menggunakan metode yang telah tersedia. Jika data yang diinput oleh pengguna sudah sesuai, maka pengguna dapat masuk dan menikmati layanan yang disediakan oleh aplikasi atau sistem. Namun, jika terdapat salah satu data yang tidak sesuai, maka sistem akan menolak pengguna tersebut dan pengguna diarahkan kembali ke halaman login.
 
@@ -45,12 +45,12 @@ Saat ini, sistem authentication telah berkembang pesat dan memiliki berbagai met
 Flutter menyediakan banyak package yang dapat digunakan untuk mengimplementasikan state management, antara lain setstate, provider, bloc, getX, dan riverpod. Provider merupakan salah satu package state management yang menawarkan efisiensi, kesederhanaan dan fleksibilitas dalam hal mengelola state yang melibatkan beberapa widget tanpa harus melewati widget secara manual.
 <div align="center">
   <img width="587" height="321" alt="image" src="https://github.com/user-attachments/assets/5236594b-7d20-4aa7-84e6-8934e9c97e6d" />
-</div>
+</div> <br>
 
 Tanpa menggunakan provider proses flow atau alur state menjadi lebih panjang karena bussines logic tergabung dengan UI. Penggabungan tersebut akan membuat state harus diturunkan secara manual menggunakan constructor atau widget parameter dari widget induk ke widget anaknya (metode ini disebut prop drilling). Semakin kompleks dan dalam susunan hirarki widget pada suatu aplikasi maka semakin banyak level yang harus di lewati state tersebut meskipun diantaranya tidak membutuhkan state tersebut. Hal tersebut akan membuat kode menjadi lebih rumit dan sulit untuk di maintenance. Flow di dalamnya pun menjadi tidak efisien.
 <div align="center">
   <img width="590" height="336" alt="image" src="https://github.com/user-attachments/assets/06609209-438d-46d3-94ba-0d75fe9230eb" />
-</div>
+</div> <br>
 
 Sedangkan jika menggunakan provider, maka bussines logic akan dibuat terpisah dari UI. State akan dikelola secara terpusat sehingga dapat diakses oleh widget manapun tanpa harus melewati widget induk terlebih dahulu. Provider memungkinkan widget untuk mendengar (listen) state yang ada tanpa harus meneruskan data melalui constructor atau parameter.
 ***
@@ -64,7 +64,7 @@ Berikut merupakan tampilan dari aplikasi yang akan dibentuk pada praktikum bab 3
   <img width="296" height="658" alt="image" src="https://github.com/user-attachments/assets/cd871cee-54f6-4859-a765-9d4054a26ed4" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img width="296" height="659" alt="image" src="https://github.com/user-attachments/assets/cda8d893-3806-4995-b328-29f55b9bf048" />
-</div>
+</div> <br>
 
 **Penjelasan terkait bagaimana cara aplikasi bekerja akan diterangkan oleh asisten yang mengajar.**
 
