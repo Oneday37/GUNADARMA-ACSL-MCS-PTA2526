@@ -119,8 +119,9 @@ CREATE TABLE card(
 Kode program di atas digunakan untuk membuat tabel database baru bernama card. Tabel yang dibuat pada praktikum kali ini hanya memiliki 1 field bernama id bertipe data varchar yang hanya dapat menampung karakter sepanjang 20 karakter. Migrate up merupakan instruksi yang akan menerapkan semua query SQL ke yang lebih baru. Statement begin merupakan instruksi yang menandakan awal dari proses pembuatan database, sedangkan statement end merupakan instruksi yang menandakan akhir dari pembuatan databse.
 
 Berikutnya bukalah file database.go yang tersimpan pada folder database dan ketiklah kode program berikut:
-package database
 ```go
+package database
+
 import (
 	"database/sql"
 	"embed"
@@ -200,8 +201,9 @@ func DeleteCard(db *sql.DB, card entities.Card) (err error) {
 Kode di atas digunakan agar golang dapat melakukan interaksi dengan database. Terdapat 3 fungsi yang dibentuk pada file ini, antara lain GetCards(), InsertCard() dan DeleteCard() yang masing-masing function memiliki tujuan penggunaannya sendiri. Fungsi GetCards() digunakan untuk membaca seluruh data yang tersimpan dalam tabel card. Data tersebut dibaca dengan menggunakan perintah query SELECT * FROM card. Pada fungsi tersebut, sistem akan melakukan looping untuk mengisikan data ke dalam variabek result.
 
 Fungsi InsertCard() digunakan untuk menginput data ke dalam table card dengan menggunakan perintah query INSERT INTO card(id) values($1). Sedangkan, fungsi DeleteCard() merupakan fungsi untuk menghapus data dari tabel berdasarkan id yang terdeteksi. Perintah query yang digunakan untuk menghapus data tersebut adalah DELETE FROM card WHERE id = $1. Selanjutnya masuklah ke dalam file card_bridge_controller.go dan masukkanlah kode program berikut:
-package controllers
 ```go
+package controllers
+
 import (
 	"mcs_bab_6/database"
 	"mcs_bab_6/entities"
@@ -310,6 +312,7 @@ PostgreSQL akan menampilkan halaman baru yang berisikan konfigurasi untuk pembua
 Jika database telah terbentuk, kembalilah ke dalam software visual studio code dan masukkan kode berikut ke dalam file main.go
 ```go
 package main
+
 import (
 	"database/sql"
 	"fmt"
