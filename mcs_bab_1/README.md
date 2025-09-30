@@ -97,7 +97,7 @@ Jika file project sudah berhasil terbentuk, pastikan tampilan awal android studi
   <img align="center" width="827" height="465" alt="image" src="https://github.com/user-attachments/assets/f8d1b3d0-2b3f-4e24-818e-6a17fc40a909" />
 </div> <br>
 
-Bukalah folder lib yang telah disediakan oleh flutter, maka akan terlihat 1 file dengan exstension dart bernama main.dart yang merupakan file utama sekaligus file yang akan dijalankan paling pertama saat program dijalankan. Ubahlah kode program default yang ada pada file tersebut dengan kode program berikut:
+Bukalah folder lib yang telah disediakan oleh flutter, maka akan terlihat 1 file dengan exstension dart bernama **main.dart** yang merupakan file utama sekaligus file yang akan dijalankan paling pertama saat program dijalankan. Ubahlah kode program default yang ada pada file tersebut dengan kode program berikut:
 ```dart
 void main() {
   runApp(const MyApp());
@@ -120,9 +120,9 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-Pada saat membangun project menggunakan flutter, fungsi main() merupakan fungsi utama yang wajib dihadirkan dan merupakan fungsi yang paling pertama dijalankan. Dalam fungsi ini, program akan memanggil fungsi runApp() yang akan menghubungkan kode program dart dengan flutter. Fungsi ini akan memanggil class MyApp() yang mengextends StetlessWidget. Class MyAppp() akan mengembalikan widget MaterialApp() yang di dalamnya berisikan beberapa properti yang digunakan, seperti title: yang akan memberikan label pada aplikasi, debugShowCheckedModeBanne: yang akan menerima nilai boolean true or false untuk mengatur kehadiran dari banner debug yang berada pada pojok kanan atas, theme: yang digunakan untuk konfigurasi tema aplikasi, dan home: yang akan mengatur navigasi halaman pada saat aplikasi dijalankan sekaligus menetapkan halaman pertama yang akan ditampilkan oleh aplikasi.
+Pada saat membangun project menggunakan flutter, fungsi main() merupakan fungsi utama yang wajib dihadirkan dan merupakan fungsi yang paling pertama dijalankan. Dalam fungsi ini, program akan memanggil fungsi runApp() yang akan menghubungkan kode program dart dengan flutter. Fungsi ini akan memanggil class MyApp() yang mengextends StetlessWidget. Class MyAppp() akan mengembalikan widget MaterialApp() yang di dalamnya berisikan beberapa properti yang digunakan, seperti **title:** yang akan memberikan label pada aplikasi, debugShowCheckedModeBanne: yang akan menerima nilai boolean true or false untuk mengatur kehadiran dari banner debug yang berada pada pojok kanan atas, theme: yang digunakan untuk konfigurasi tema aplikasi, dan home: yang akan mengatur navigasi halaman pada saat aplikasi dijalankan sekaligus menetapkan halaman pertama yang akan ditampilkan oleh aplikasi.
 
-Setelah membangun fondasi awal dari aplikasi, langkah berikutnya yang dilakukan adalah membuat file baru bernama home_page.dart yang akan membentuk halaman home aplikasi dengan menggunakan beberapa baris kode program. Berikut merupakan kode program yang digunakan dalam membentuk halaman home aplikasi tersebut:
+Setelah membangun fondasi awal dari aplikasi, langkah berikutnya yang dilakukan adalah membuat file baru bernama **home_page.dart** yang akan membentuk halaman home aplikasi dengan menggunakan beberapa baris kode program. Berikut merupakan kode program yang digunakan dalam membentuk halaman home aplikasi tersebut:
 ```dart
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -742,7 +742,7 @@ return Scaffold(
 );
 ```
 
-Berikutnya terdapat field besar yang juga akan menerima input dari pengguna berupa teks panjang yang nantinya dapat dikirimkan ke halaman selanjutnya, yakni halaman reveiver page. Namun, sebelum membangun area ini, diperlukan sebuah file bernama receiver_page.dart yang akan menerima dan menampilkan pesan yang dituliskan oleh pengguna pada field tersebut. Berikut merupakan kode yang digunakan pada file receiver_page.dart:
+Berikutnya terdapat field besar yang juga akan menerima input dari pengguna berupa teks panjang yang nantinya dapat dikirimkan ke halaman selanjutnya, yakni halaman reveiver page. Namun, sebelum membangun area ini, diperlukan sebuah file bernama receiver_page.dart yang akan menerima dan menampilkan pesan yang dituliskan oleh pengguna pada field tersebut. Berikut merupakan kode yang digunakan pada file **receiver_page.dart:**
 ```dart
 class ReceiverPage extends StatefulWidget {
   String message;
