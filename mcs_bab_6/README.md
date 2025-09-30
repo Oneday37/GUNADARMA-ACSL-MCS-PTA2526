@@ -93,7 +93,7 @@ Setelah melakukan konfigurasi pada project golang, bukalah folder tersebut pada 
   <img width="352" height="552" alt="image" src="https://github.com/user-attachments/assets/434d85ef-e3f7-48c5-8975-2e772776931d" />
 </div> <br>
 
-Setelah membentuk struktur tree project, bukalah file card_bridge_entity.go dan masukkanlah kode program berikut:
+Setelah membentuk struktur tree project, bukalah file **card_bridge_entity.go** dan masukkanlah kode program berikut:
 ```go
 package entities
 
@@ -104,7 +104,7 @@ type Card struct {
 
 Kode program tersebut berperan sebagai model yang mendefinisikan variabel serta tipe data yang digunakannya. Karena pada praktikum kali ini hanya digunakan untuk menyimpan data id dari RFID, maka variabel yang didefinisikan hanyalah 1 variabel saja dengan tipe string. Ketika data tersebut akan dikonversi ke dalam bentuk JSON, maka field tersebut akan tersimpan ke dalam key id.
 
-Kemudian, bukalah file 1_initiate.sql yang tersimpan di dalam folder sql_migrations dan masukkanlah kode program berikut:
+Kemudian, bukalah file **1_initiate.sql** yang tersimpan di dalam folder sql_migrations dan masukkanlah kode program berikut:
 ```go
 -- +migrate Up
 -- +migrate StatementBegin
@@ -118,7 +118,7 @@ CREATE TABLE card(
 
 Kode program di atas digunakan untuk membuat tabel database baru bernama card. Tabel yang dibuat pada praktikum kali ini hanya memiliki 1 field bernama id bertipe data varchar yang hanya dapat menampung karakter sepanjang 20 karakter. Migrate up merupakan instruksi yang akan menerapkan semua query SQL ke yang lebih baru. Statement begin merupakan instruksi yang menandakan awal dari proses pembuatan database, sedangkan statement end merupakan instruksi yang menandakan akhir dari pembuatan databse.
 
-Berikutnya bukalah file database.go yang tersimpan pada folder database dan ketiklah kode program berikut:
+Berikutnya bukalah file **database.go** yang tersimpan pada folder database dan ketiklah kode program berikut:
 ```go
 package database
 
@@ -155,7 +155,7 @@ Kode program di atas digunakan untuk proses migrasi golang ke database. Baris ko
 
 Berikutnya terdapat function DBMigrate() yang di dalamnya terdapat parameter dbParam yang berfungsi dalam menerima status koneksi golang ke database. Ketika function tersebut dipanggil, maka sistem akan menjalankan proses migrasi database dengan root yang diambil dari folder sql_migrations. Berikutnya sistem akan menjalankan proses migrasi dengan pemanggilan terhadap fungsi Exec(). Proses tersebut akan menyimpan jumlah migrasi yang berhasil dilakukan dan mengembalikan kondisi error jika proses migrasi mengalami permasalahan. Jika terjadi error, maka sistem akan memanggil fungsi panic() yang akan langsung menghentikan jalannya program. Jika tidak terdeteksi error, maka sistem akan menampilkan pesan bahwa proses migrasi berhasil dilakukan.
 
-Kemudian bukalah file card_bridge_repo.go dan masukkanlah kode program berikut:
+Kemudian bukalah file **card_bridge_repo.go** dan masukkanlah kode program berikut:
 ```go
 package repositories
 
@@ -200,7 +200,7 @@ func DeleteCard(db *sql.DB, card entities.Card) (err error) {
 
 Kode di atas digunakan agar golang dapat melakukan interaksi dengan database. Terdapat 3 fungsi yang dibentuk pada file ini, antara lain GetCards(), InsertCard() dan DeleteCard() yang masing-masing function memiliki tujuan penggunaannya sendiri. Fungsi GetCards() digunakan untuk membaca seluruh data yang tersimpan dalam tabel card. Data tersebut dibaca dengan menggunakan perintah query SELECT * FROM card. Pada fungsi tersebut, sistem akan melakukan looping untuk mengisikan data ke dalam variabek result.
 
-Fungsi InsertCard() digunakan untuk menginput data ke dalam table card dengan menggunakan perintah query INSERT INTO card(id) values($1). Sedangkan, fungsi DeleteCard() merupakan fungsi untuk menghapus data dari tabel berdasarkan id yang terdeteksi. Perintah query yang digunakan untuk menghapus data tersebut adalah DELETE FROM card WHERE id = $1. Selanjutnya masuklah ke dalam file card_bridge_controller.go dan masukkanlah kode program berikut:
+Fungsi InsertCard() digunakan untuk menginput data ke dalam table card dengan menggunakan perintah query INSERT INTO card(id) values($1). Sedangkan, fungsi DeleteCard() merupakan fungsi untuk menghapus data dari tabel berdasarkan id yang terdeteksi. Perintah query yang digunakan untuk menghapus data tersebut adalah DELETE FROM card WHERE id = $1. Selanjutnya masuklah ke dalam file **card_bridge_controller.go** dan masukkanlah kode program berikut:
 ```go
 package controllers
 
@@ -263,7 +263,7 @@ Kode program yang digunakan pada file controller bertujuan untuk mengontrol apa 
 
 Fungsi InsertCard() digunakan untuk menginput data ke dalam database. Data kartu dimasukkan menggunakan parameter di akhir url bernama id. Variabel idCard memiliki nilai yang diambil dari parameter id, lalu card.ID diinisialisasi dengan nilai dari idCard. Setelah itu memanggil InsertCard() dari package repositories agar data masuk ke database. Jika error maka response yang akan diberikan adalah error dengan StatusInternalServerError. Fungsi DeleteCard() digunakan untuk meenghapus data kartu yang telah disimpan pada database dengan memanggil fungsi DeleteCard() yang telah dibentuk pada package repositories. Jika terjadi error maka response yang diberikan adalah StatusInternalServerError.
 
-Selanjutnya, bukalah file card_bridge_router.go dan masukkanlah kode program berikut:
+Selanjutnya, bukalah file **card_bridge_router.go** dan masukkanlah kode program berikut:
 ```go
 package routers
 
@@ -309,7 +309,7 @@ PostgreSQL akan menampilkan halaman baru yang berisikan konfigurasi untuk pembua
   <img width="532" height="420" alt="image" src="https://github.com/user-attachments/assets/de7a323c-0a5e-47b0-a814-fa96ed30f3b8" />
 </div> <br>
 
-Jika database telah terbentuk, kembalilah ke dalam software visual studio code dan masukkan kode berikut ke dalam file main.go
+Jika database telah terbentuk, kembalilah ke dalam software visual studio code dan masukkan kode berikut ke dalam file **main.go**
 ```go
 package main
 
