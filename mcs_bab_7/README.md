@@ -81,7 +81,7 @@ Setelah melakukan konfigurasi pada project golang, bukalah folder tersebut pada 
   <img width="353" height="488" alt="image" src="https://github.com/user-attachments/assets/72bbc8d2-812f-4e56-b4a3-7a9f2129cd75" />
 </div> <br>
 
-Setelah membentuk struktur tree project, bukalah file servo_entity.go dan masukkanlah kode program berikut:
+Setelah membentuk struktur tree project, bukalah file **servo_entity.go** dan masukkanlah kode program berikut:
 ```go
 package entities
 
@@ -93,7 +93,7 @@ type Status struct {
 
 Kode program tersebut berperan sebagai model yang mendefinisikan variabel serta tipe data yang digunakannya. Pada praktikum kali ini, variabel yang didefinisikan ada sebanyak 2, yakni Id dan SrvStatus yang sama-sama bertipe data integer. Masing-masing variabel memiliki bentuk JSONnya sendiri, dimana data dari variabel Id akan dikonversi ke key id, sedangkan data pada SrvStatus akan dikonversi ke dalam key srv_status.
 
-Kemudian, bukalah file 1_initiate.sql yang tersimpan di dalam folder sql_migrations dan masukkanlah kode program berikut:
+Kemudian, bukalah file **1_initiate.sql** yang tersimpan di dalam folder sql_migrations dan masukkanlah kode program berikut:
 ```go
 -- +migrate Up
 -- +migrate StatementBegin
@@ -110,7 +110,7 @@ Kode program di atas digunakan untuk membuat tabel database baru bernama servo. 
 
 Migrate up merupakan instruksi yang akan menerapkan semua query SQL ke yang lebih baru. Statement begin merupakan instruksi yang menandakan awal dari proses pembuatan database, sedangkan statement end merupakan instruksi yang menandakan akhir dari pembuatan databse.
 
-Berikutnya bukalah file database.go yang tersimpan pada folder database dan ketiklah kode program berikut:
+Berikutnya bukalah file **database.go** yang tersimpan pada folder database dan ketiklah kode program berikut:
 ```go
 package database
 
@@ -148,7 +148,7 @@ Kode program di atas digunakan untuk proses migrasi golang ke database. Baris ko
 
 Berikutnya terdapat function DBMigrate() yang di dalamnya terdapat parameter dbParam yang berfungsi dalam menerima status koneksi golang ke database. Ketika function tersebut dipanggil, maka sistem akan menjalankan proses migrasi database dengan root yang diambil dari folder sql_migrations. Berikutnya sistem akan menjalankan proses migrasi dengan pemanggilan terhadap fungsi Exec(). Proses tersebut akan menyimpan jumlah migrasi yang berhasil dilakukan dan mengembalikan kondisi error jika proses migrasi mengalami permasalahan. Jika terjadi error, maka sistem akan memanggil fungsi panic() yang akan langsung menghentikan jalannya program. Jika tidak terdeteksi error, maka sistem akan menampilkan pesan bahwa proses migrasi berhasil dilakukan.
 
-Kemudian bukalah file servo_repo.go dan masukkanlah kode program berikut:
+Kemudian bukalah file **servo_repo.go** dan masukkanlah kode program berikut:
 ```go
 package repositories
 
@@ -191,7 +191,7 @@ func UpdateStatus(db *sql.DB, status entities.Servo) (err error) {
 }
 ```
 
-Kode di atas digunakan agar golang dapat melakukan interaksi dengan database. Terdapat 3 fungsi yang dibentuk pada file ini, antara lain InitProj(), GetStatus() dan UpdateStatus() yang masing-masing function memiliki tujuan penggunaannya sendiri. Fungsi InitProj() digunakan untuk menginisialisasi data awal dari status servo. Fungsi ini akan memberikan nilai 1 untuk id dan nilai 0 untuk srv_status. Fungsi ini hanya dapat dilakukan 1x saja, karena query id yang didefinisikan adalah 1, sedangkan id sendiri merupakan primary key yang apabila dijalankan kembali, maka akn terjadi kesalahan. Fungsi GetStatus() digunakan untuk membaca seluruh data yang tersimpan pada tabel status dengan menggunakan perintah query SELECT * FROM card. Fungsi UpdateStatus() digunakan untuk merubah nilai pada srv_status dengan menggunakan perintah query UPDATE status SET srv_status = $1 WHERE id = 1. Selanjutnya masuklah ke dalam file servo_controller.go dan masukkanlah kode program berikut:
+Kode di atas digunakan agar golang dapat melakukan interaksi dengan database. Terdapat 3 fungsi yang dibentuk pada file ini, antara lain InitProj(), GetStatus() dan UpdateStatus() yang masing-masing function memiliki tujuan penggunaannya sendiri. Fungsi InitProj() digunakan untuk menginisialisasi data awal dari status servo. Fungsi ini akan memberikan nilai 1 untuk id dan nilai 0 untuk srv_status. Fungsi ini hanya dapat dilakukan 1x saja, karena query id yang didefinisikan adalah 1, sedangkan id sendiri merupakan primary key yang apabila dijalankan kembali, maka akn terjadi kesalahan. Fungsi GetStatus() digunakan untuk membaca seluruh data yang tersimpan pada tabel status dengan menggunakan perintah query SELECT * FROM card. Fungsi UpdateStatus() digunakan untuk merubah nilai pada srv_status dengan menggunakan perintah query UPDATE status SET srv_status = $1 WHERE id = 1. Selanjutnya masuklah ke dalam file **servo_controller.go** dan masukkanlah kode program berikut:
 ```go
 package controllers
 
@@ -249,7 +249,7 @@ func UpdateStatus(c *gin.Context) {
  
 Kode program yang digunakan pada file controller bertujuan untuk mengontrol apa yang akan dilakukan oleh sistem. Pada file ini, terdapat 3 fungsi yang dibentuk berdasarkan fungsi yang terbentuk pada file servo_repo.go. Fungsi InitProj() berfungsi untuk menginisialisasi field id agar memiliki nilai 1 dengan memanggil fungsi InitProj() yang berada di package repositories. Fungsi GetStatus() digunakan untuk membaca table status dari database dengan memanggil fungsi GetStatus() yang berada di package repositories. Fungsi UpdateStatus() digunakan untuk mengubah field srv_status dengan mengambil nilai dari parameter srv_status.
 
-Selanjutnya, bukalah file servo_router.go dan masukkanlah kode program berikut:
+Selanjutnya, bukalah file **servo_router.go** dan masukkanlah kode program berikut:
 ```go
 package routers
 
@@ -295,7 +295,7 @@ PostgreSQL akan menampilkan halaman baru yang berisikan konfigurasi untuk pembua
   <img width="532" height="420" alt="image" src="https://github.com/user-attachments/assets/6b88cffb-74d1-4873-bcde-3484c810c309" />
 </div> <br>
 
-Jika database telah terbentuk, kembalilah ke dalam software visual studio code dan masukkan kode berikut ke dalam file main.go
+Jika database telah terbentuk, kembalilah ke dalam software visual studio code dan masukkan kode berikut ke dalam file **main.go**
 ```go
 package main
 
