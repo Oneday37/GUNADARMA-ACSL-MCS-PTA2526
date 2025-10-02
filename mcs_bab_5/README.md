@@ -143,11 +143,6 @@ Masukkanlah API response yang telah disalin sebelumnya ke bagian field sebelah k
 
 Setelah quicktype memberikan model untuk response API keys, salinlah model tersebut dengan menekan tombol Copy Code dan masukkan ke dalam file field1_model.dart. Lakukanlah hal yang sama terhadap field 2 dan 3. Jika ketiga model field telah dibuat, masuklah ke dalam file **api_service.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:dio/dio.dart';
-import 'package:mcs_bab_5/models/field1_model.dart';
-import '../models/field2_model.dart';
-import '../models/field3_model.dart';
-
 class ApiService {
   Dio dio = Dio();
 
@@ -207,14 +202,6 @@ Setelah menambahkan gambar, bukalah kembali file pubspec.yaml dan carilah baris 
 
 Jika sudah menghilangkan comment tersebut, lakukanlah pub get untuk memperbarui hasil konfigurasi. Jika sudah, bukalah file **app_provider.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mcs_bab_5/models/field1_model.dart';
-import 'package:mcs_bab_5/screens/home_page.dart';
-import 'package:mcs_bab_5/services/api_service.dart';
-import '../models/field2_model.dart';
-import '../models/field3_model.dart';
-
 class AppProvider extends ChangeNotifier {
   TextStyle roboto14Italic = GoogleFonts.roboto(
     fontSize: 14,
@@ -294,11 +281,6 @@ Kode program tersebut berisikan kumpulan deklarasi variabel dan fungsi yang nant
 
 Kemudian bukalah file **main.dart** dan tuliskan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_5/providers/app_provider.dart';
-import 'package:mcs_bab_5/screens/splash_screen.dart';
-import 'package:provider/provider.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -333,11 +315,6 @@ Pada file main.dart terlihat bahwa terdapat pemanggilan terhadap function getTem
 
 Berikutnya bukalah file **splash_screen.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_5/providers/app_provider.dart';
-import 'package:mcs_bab_5/screens/home_page.dart';
-import 'package:provider/provider.dart';
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -422,8 +399,6 @@ Kode tersebut merupakan kode yang digunakan untuk membangun halaman splash scree
 
 Berikutnya masuklah ke dalam file **custom_read_file.dart** dan masukkan kode porgram berikut:
 ```dart
-import 'package:flutter/material.dart';
-
 class CustomReadField extends StatelessWidget {
   String result;
   Color borderColor;
@@ -465,11 +440,6 @@ Kode program pada file tersebut digunakan untuk memberikan tampilan yang nantiny
 
 Berikutnya masuklah ke dalam file **home_page.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_5/providers/app_provider.dart';
-import 'package:mcs_bab_5/widget/custom_read_field.dart';
-import 'package:provider/provider.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
