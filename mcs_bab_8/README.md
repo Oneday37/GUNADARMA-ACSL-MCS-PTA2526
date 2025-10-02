@@ -24,6 +24,8 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | SOFTWARE YANG DIBUTUHKAN | |
 | --------- | ------------- |
 | Android Studio / Visual Studio Code |
+| Arduino IDE|
+| Postman |
 ***
 
 ### **8.3 MATERI PRAKTIKUM**
