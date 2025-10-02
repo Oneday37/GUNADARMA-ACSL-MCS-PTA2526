@@ -36,8 +36,7 @@ class AppProvider extends ChangeNotifier {
 
   // METHOD LOGIN FIREBASE
   Future loginToApp(
-    String usernameController,
-    String passwordController,
+    String username, String password
   ) async {
     try {
       UserCredential userCredential = await firebaseAuthentication
