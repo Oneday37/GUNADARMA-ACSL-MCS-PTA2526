@@ -133,10 +133,6 @@ Model yang dibentuk pada NewsModel{} merupakan model yang merepresentasikan data
 
 Berikutnya masuklah ke dalam file **news_service.dart** dan masukkan kode program berikut di dalamnya:
 ```dart
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:mcs_bab_4/model/news_model.dart';
-
 class NewsService {
   final universalUrl =
       "https://newsapi.org/v2/everything?q=tesla&from=2025-08-20&sortBy=publishedAt&apiKey={API_KEY}"; // MASUKKAN API KEY MASING-MASING
