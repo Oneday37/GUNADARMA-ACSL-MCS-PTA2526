@@ -120,35 +120,39 @@ Berikutnya masuklah ke dalam menu users untuk menambahkan user baru untuk authen
 
 Setelah user baru berhasil dibuat, langkah selanjutnya yang dilakukan adalah melakukan konfigurasi firebase dengan project flutter. Konfigurasi firebase dengan flutter project dilakukan dengan menggunakan Command Line Interface (CLI) yang prosesnya melalui beberapa tahapan, antara lain:
 1.	Pastikan laptop / PC sudah terinstall node.js. Jika laptop / PC belum terinstall node.js, maka harap mengunduhnya terlebih dahulu pada halaman website https://nodejs.org/en.
+```
+node --version
+```
+
 2.	Pastikan path C:\Users<nama user pada perangkat>\AppData\Local\Pub\Cache\bin telah diinput pada bagian path yang ada pada environtment variables.
 3.	Bukalah command prompt (CMD) atau windows powershell.
 4.	Ketikan perintah npm install -g firebase-tools pada terminal yang telah dibuka dan tunggulah hingga proses installasi selesai. Perintah tersebut digunakan untuk menginstall firebase CLI pada perangkat secara global dengan menggunakan npm.
-```node
+```
 npm install -g firebase-tools
 ```
 
-6.	Bukalah project flutter yang telah dikerjakan pada pertemuan praktikum sebelumnya (praktikum bab 2) dan masuklah ke dalam terminal project tersebut.
-7.	Ketikan perintah firebase login untuk menghubungkan project dengan layanan firebase. Jika baru pertama kali menggunakan firebase dan belum pernah menghubungkan project flutter dengan firebase, maka nanti flutter akan mengarahkan ke sebuah halaman yang meminta akun untuk dihubungkan ke Firebase CLI.
-```dart
+5.	Bukalah project flutter yang telah dikerjakan pada pertemuan praktikum sebelumnya (praktikum bab 2) dan masuklah ke dalam terminal project tersebut.
+6.	Ketikan perintah firebase login untuk menghubungkan project dengan layanan firebase. Jika baru pertama kali menggunakan firebase dan belum pernah menghubungkan project flutter dengan firebase, maka nanti flutter akan mengarahkan ke sebuah halaman yang meminta akun untuk dihubungkan ke Firebase CLI.
+```
 firebase login
 ```
 
-8.	Setelah berhasil login ke dalam firebase, ketikan perintah firebase projects:list untuk melihat seluruh project yang ada pada akun tersebut.
-```dart
+7.	Setelah berhasil login ke dalam firebase, ketikan perintah firebase projects:list untuk melihat seluruh project yang ada pada akun tersebut.
+```
 firebase projects:list
 ```
 
-9.	Ketikan perintah dart pub global activate flutterfire_cli untuk menginstall flutterfire cli dan tunggu hingga proses installasi selesai.
+8.	Ketikan perintah dart pub global activate flutterfire_cli untuk menginstall flutterfire cli dan tunggu hingga proses installasi selesai.
 ```dart
 dart pub global activate flutterfire_cli
 ```
 
-10.	Setelah proses installasi selesai, ketikan perintah flutterfire configure untuk mengonfigurasikan project flutter ke firebase. Dalam proses ini, terdapat beberapa langkah yang harus diikuti agar proses konfigurasi dapat berjalan dengan baik. Praktikan diharapkan untuk memperhatikan dengan seksama penjelasan yang diberikan oleh PJ yang mengajar.
-```dart
+9.	Setelah proses installasi selesai, ketikan perintah flutterfire configure untuk mengonfigurasikan project flutter ke firebase. Dalam proses ini, terdapat beberapa langkah yang harus diikuti agar proses konfigurasi dapat berjalan dengan baik. Praktikan diharapkan untuk memperhatikan dengan seksama penjelasan yang diberikan oleh PJ yang mengajar.
+```
 flutterfire configure
 ```
 
-11.	Setelah proses konfigurasi ke firebase telah selesai, pada folder lib project flutter akan muncul sebuah file bernama firebase_options.dart secara otomatis. File tersebut berisikan konfigurasi untuk menghubungkan firebase dengan project Flutter.
+10.	Setelah proses konfigurasi ke firebase telah selesai, pada folder lib project flutter akan muncul sebuah file bernama firebase_options.dart secara otomatis. File tersebut berisikan konfigurasi untuk menghubungkan firebase dengan project Flutter.
 <div align="center">
   <img width="352" height="45" alt="image" src="https://github.com/user-attachments/assets/d45224b9-8158-493d-a394-fa369fc64d8b" />
 </div> <br>
