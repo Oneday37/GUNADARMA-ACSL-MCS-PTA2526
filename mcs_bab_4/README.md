@@ -76,7 +76,7 @@ Dalam praktikum kali ini, kita menggunakan 5 package tambahan, antara lain http,
   <img width="348" height="345" alt="image" src="https://github.com/user-attachments/assets/4fdbe55c-457f-4b8a-ba29-ffdbaa82d977" />
 </div> <br>
 
-Masuklah ke dalam file news_model.dart dan masukkanlah kode program berikut:
+Masuklah ke dalam file **news_model.dart** dan masukkanlah kode program berikut:
 ```dart
 class NewsSource {
   dynamic id;
@@ -131,12 +131,8 @@ File tersebut berisikan beberapa baris program yang digunakan dalam membuat mode
 
 Model yang dibentuk pada NewsModel{} merupakan model yang merepresentasikan data API secara umum. NewsModel{} memiliki constructor yang lebih banyak dibandingkan dengan NewsSource{}, karena data yang tersimpan di dalam array induk pada NewsAPI jauh lebih banyak dibandingkan dengan NewsSource{} yang hanya menyimpan data untuk id dan name. Model ini juga mengembalikan nilai dari setiap key API ke dalam bentuk dart objek dengan cara mapping terhadap data JSON tersebut dengan menggunakan perintah factoryNewsModel.fromJson().
 
-Berikutnya masuklah ke dalam file news_service.dart dan masukkan kode program berikut di dalamnya:
+Berikutnya masuklah ke dalam file **news_service.dart** dan masukkan kode program berikut di dalamnya:
 ```dart
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import 'package:mcs_bab_4/model/news_model.dart';
-
 class NewsService {
   final universalUrl =
       "https://newsapi.org/v2/everything?q=tesla&from=2025-08-20&sortBy=publishedAt&apiKey={API_KEY}"; // MASUKKAN API KEY MASING-MASING
@@ -234,7 +230,7 @@ Dalam class provider tersebut, didefinisikan beberapa variabel dan juga method y
 3.	Variabel titleFontStyle, subTitleFontStyle, subTitleFontWithStrokeStyle dan universalFontStyle merupakan variabel bertipe TextStyle yang akan memberikan styling terhadap widget Text dengan menggunakan jenis font yang disediakan oleh package google_fonts.
 4.	Method goToDetailNews() bersifat asynchronus yang berisikan 4 constructor bersifat required, yakni context, newsModel, index dan navigationPage. Method ini akan mengambil dan menyimpan seluruh data yang ada pada halaman sebelumnya ke dalam masing-masing objek dan akan menavigasikan aplikasi ke halaman berikutnya.
 
-Berikutnya masuklah ke dalam file main.dart terlebih dahulu untuk memberikan konfigurasi dasar pada aplikasi yang akan dibuat.
+Berikutnya masuklah ke dalam file **main.dart** terlebih dahulu untuk memberikan konfigurasi dasar pada aplikasi yang akan dibuat.
 ```dart
 void main() {
   runApp(MyApp());
@@ -395,7 +391,7 @@ ListView.builder(
 
 Bagian list berita dibentuk dengan menggunakan widget ListView.builder() yang di dalamnya memiliki properti shrinkWrap: true dan physics: NeverScrollableScrollPhysics(). Logika program yang digunakan dalam bagian ini sama seperti yang digunakan pada bagian highlight berita, yang mana ketika pengguna menekan salah satu berita, maka halaman akan berubah ke bagian detail berita.
 
-Selanjutnya bukalah file detail_page.dart dan masukkanlah kode program berikut:
+Selanjutnya bukalah file **detail_page.dart** dan masukkanlah kode program berikut:
 ```dart
 class DetailPage extends StatelessWidget {
   const DetailPage({super.key});

@@ -56,7 +56,7 @@ Dalam mengimplementasikan tampilan dari desain aplikasi di atas, terdapat bebera
   <img align="center" width="648" height="592" alt="image" src="https://github.com/user-attachments/assets/e250b92c-ac57-43dc-9449-bfb786e63839" />
 </div> <br>
 
-Jika file project sudah berhasil terbentuk, pastikan kembali bahwa tampilan yang diberikan oleh android studio sudah berada pada menu project. Jika tampilan menu sudah berada pada bagian project, bukalah file pubspec.yaml dan scroll file tersebut hingga mendapatkan bagian depedencies. Pada file ini, kita akan menambahkan package baru yang diambil melalui halaman website https://pub.dev/, yakni package google_fonts. Package ini digunakan untuk memberikan styling terhadap widget text yang digunakan pada aplikasi. Dengan menggunakan package ini, kita dapat memperindah teks aplikasi dengan tema font yang disediakan oleh google.
+Jika file project sudah berhasil terbentuk, pastikan kembali bahwa tampilan yang diberikan oleh android studio sudah berada pada menu project. Jika tampilan menu sudah berada pada bagian project, bukalah file **pubspec.yaml** dan scroll file tersebut hingga mendapatkan bagian depedencies. Pada file ini, kita akan menambahkan package baru yang diambil melalui halaman website https://pub.dev/, yakni package google_fonts. Package ini digunakan untuk memberikan styling terhadap widget text yang digunakan pada aplikasi. Dengan menggunakan package ini, kita dapat memperindah teks aplikasi dengan tema font yang disediakan oleh google.
 <div align="center">
   <img width="827" height="349" alt="image" src="https://github.com/user-attachments/assets/ecca5743-9833-4a82-b360-2bce839b9ba5" />
 </div> <br>
@@ -66,7 +66,7 @@ Setelah memasukkan package google_fonts ke dalam project flutter, langkah selanj
   <img width="416" height="343" alt="image" src="https://github.com/user-attachments/assets/6bc893b7-b892-4083-a331-a32e27ab7948" />
 </div> <br>
 
-Berikutnya masuklah ke dalam file cat_model.dart yang ada pada folder model dan ketikan kode program berikut:
+Berikutnya masuklah ke dalam file **cat_model.dart** yang ada pada folder model dan ketikan kode program berikut:
 ```dart
 class CatModel {
   String urlImage;
@@ -80,7 +80,7 @@ class CatModel {
 }
 ```
 
-Pada file tersebut, dibuatlah class baru bernama CatModel() yang di dalamnya terdapat beberapa constructor. Class ini digunakan sebagai kerangka dalam pembentukan sebuah data. Dalam class ini terdapat 3 variabel yang didefinisikan, yakni urlImage, name, dan desc dimana masing-masing variabel tersebut bersifat required pada saat pembuatan constructor. Hal tersebut menandakan bahwa ketika pengguna memanggil class tersebut, maka secara otomatis sistem meminta data untuk urlImage, name, dan desc dari data yang ingin ditambahkan. Kemudian bukalah file cat_data.dart yang tersimpan di dalam folder data dan masukkan kode program berikut:
+Pada file tersebut, dibuatlah class baru bernama CatModel() yang di dalamnya terdapat beberapa constructor. Class ini digunakan sebagai kerangka dalam pembentukan sebuah data. Dalam class ini terdapat 3 variabel yang didefinisikan, yakni urlImage, name, dan desc dimana masing-masing variabel tersebut bersifat required pada saat pembuatan constructor. Hal tersebut menandakan bahwa ketika pengguna memanggil class tersebut, maka secara otomatis sistem meminta data untuk urlImage, name, dan desc dari data yang ingin ditambahkan. Kemudian bukalah file **cat_data.dart** yang tersimpan di dalam folder data dan masukkan kode program berikut:
 ```dart
 List<CatModel> cats = [
   CatModel(
@@ -144,7 +144,7 @@ List<CatModel> cats = [
 
 File ini berisikan kumpulan data dummy yang tersimpan dalam variabel cats yang bertipe list. Seluruh data dummy tersebut dibentuk dengan menggunakan kerangka yang sebelumnya telah dibuat pada file cat_model.dart. Untuk menggunakan model kerangka yang telah dibuat sebelumnya, diperlukan pemanggilan terhadap class CatModel() pada saat mendefinisikan tipe data list untuk variabel cats. Class CatModel() ini perlu dipanggil jika kita ingin menggunakan kerangka yang telah dibuat, karena di dalam class CatModel() memiliki constructor yang berisikan kerangka untuk pengisian data.
 
-Kemudian bukalah file main.dart untuk mendefinisikan beberapa konfigurasi yang akan digunakan pada aplikasi tersebut dan ketikan kode program berikut:
+Kemudian bukalah file **main.dart** untuk mendefinisikan beberapa konfigurasi yang akan digunakan pada aplikasi tersebut dan ketikan kode program berikut:
 ```dart
 void main() {
   runApp(const MyApp());
@@ -169,7 +169,7 @@ class MyApp extends StatelessWidget {
 
 File ini hanya berisikan konfigurasi dasar yang diperlukan agar seluruh kode program dapat dijalankan dan memberikan tema terhadap aplikasi. File ini berisikan fungsi main() yang di dalamnya terdapat fungsi runApp() yang akan memanggil class MyApp() yang mengextends StatelessWidget. Class ini akan mengembalikan widget MaterialApp() yang di dalamnya terdapat beberapa konfigurasi sederhana untuk aplikasi. Konfigurasi ini merupakan konfigurasi yang digunakan pada pertemuan bab sebelumnya, hanya saja terdapat konfigurasi tambahan yang dilakukan pada properti theme: yang memanggil widget ThemeData() dengan nilai pada properti colorScheme: const ColorScheme.dark() yang akan memberikan tema gelap pada aplikasi.
 
-Setelah melakukan konfigurasi dasar pada file main.dart, langkah selanjutnya adalah membangun tampilan dari halaman home dengan menggunakan kode program berikut:
+Setelah melakukan konfigurasi dasar pada file main.dart, langkah selanjutnya adalah membangun tampilan dari halaman **home** dengan menggunakan kode program berikut:
 ```dart
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -416,13 +416,14 @@ return Scaffold(
 );
 ```
 
-Selain menggunakan properti itemCount: untuk menentukan jumlah content yang ingin ditampilkan, terdapat penggunaan properti shrinkWrap: yang akan menyesuaikan tinggi berdasarkan jumlah content yang ditampilkan dan properti physics: NeverScrollableScrollPhysics() yang akan membuat item yang berada di dalam ListView.builder() tidak dapat dilakukan scroll. Hal ini sangat diperlukan agar tidak terdapat double scrolling pada satu halaman aplikasi. Kemudian terdapat properti itemBuilder: yang digunakan untuk membangun widget lain di dalam ListView.builder().
+Selain menggunakan properti **itemCount:** untuk menentukan jumlah content yang ingin ditampilkan, terdapat penggunaan properti **shrinkWrap:** yang akan menyesuaikan tinggi berdasarkan jumlah content yang ditampilkan dan properti **physics:** NeverScrollableScrollPhysics() yang akan membuat item yang berada di dalam ListView.builder() tidak dapat dilakukan scroll. Hal ini sangat diperlukan agar tidak terdapat double scrolling pada satu halaman aplikasi. Kemudian terdapat properti itemBuilder: yang digunakan untuk membangun widget lain di dalam ListView.builder().
 
 Pada praktikum ini, banyaknya content yang akan ditampilkan ditentukan berdasarkan banyaknya jumlah data yang tersimpan dalam variabel cats pada file cat_data.dart. Total jumlah data yang tersimpan pada variabel tersebut diambil dengan menggunakan argumen cats.length. Kemudian pada properti itemBuilder: terdapat sebuah deklarasi CatModel cat = cats[index] untuk memudahkan pengaksesan data yang tersimpan pada variabel cats berdasarkan indexnya.
+
 Widget ListView.builder() akan mengembalikan sebuah Container() yang di dalamnya terdapat pemanggilan terhadap widget Row(). Widget Row() tersebut akan membuat widget di dalamnya tersusun secara horizontal. Adapun content yang berada di dalam widget tersebut adalah gambar dan nama kucing. Gambar kucing tersebut dipanggil dengan pemanggilan terhadap variabel cat yang diikuti dengan pemanggilan terhadap model urlImage (cat.urlImage). Untuk memanggil gambar tersebut diperlukan penggunaan dari widget Image.network(). Gambar tersebut dibungkus dengan menggunakan widget SizedBox() dengan ukuran tinggi dan lebarnya diambil berdasarkan ukuran lebar layar perangkat dibagi dengan 4 dan di ujung dari setiap SizedBox() tersebut distyling dengan menggunakan BorderRadius.Circular() sebesar 18 agar bentuk gambar tidak terlalu kotak. Kemudian terdapat widget Text() yang akan mengembalikan nama dari setiap kucingnya dengan menggunakan perintah cat.name. Tulisan tersebut kemudian distyling dengan menggunakan package google_fonts untuk memperindah tampilan.
 
 Untuk membuat daftar tersebut dapat disentuh dan menampilkan detail dari setiap data kucing, maka widget Row() yang membungkus gambar dan nama kucing harus dibungkus dengan menggunakan widget GestureDetector(). Widget ini memiliki properti onTap: yang dapat digunakan untuk memberikan suatu tindakan pada saat pengguna menekan salah satu daftar kucing tersebut. Tindakan yang diberikan oleh sistem pada saat pengguna menekan salah satu daftar kucing tersebut adalah melakukan direct ke halaman detail kucing dengan menggunakan perintah Navigator.push(). Data yang dibawa ke halaman detail merupakan data yang dikirimkan oleh class HomePage berdasarkan index yang diakses.
-Setelah melakukan penulisan kode pada halaman utama, langkah selanjutnya adalah menuliskan kode untuk halaman detail. Penulisan kode tersebut dilakukan pada file detail_page.dart. Berikut merupakan kode yang digunakan pada file tersebut:
+Setelah melakukan penulisan kode pada halaman utama, langkah selanjutnya adalah menuliskan kode untuk halaman detail. Penulisan kode tersebut dilakukan pada file **detail_page.dart**. Berikut merupakan kode yang digunakan pada file tersebut:
 ```dart
 class DetailPage extends StatefulWidget {
   CatModel catModel;

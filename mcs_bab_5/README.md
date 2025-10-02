@@ -141,13 +141,8 @@ Masukkanlah API response yang telah disalin sebelumnya ke bagian field sebelah k
   <img width="831" height="469" alt="image" src="https://github.com/user-attachments/assets/1772686a-3ad1-47d2-9477-3330f3896546" />
 </div> <br>
 
-Setelah quicktype memberikan model untuk response API keys, salinlah model tersebut dengan menekan tombol Copy Code dan masukkan ke dalam file field1_model.dart. Lakukanlah hal yang sama terhadap field 2 dan 3. Jika ketiga model field telah dibuat, masuklah ke dalam file api_service.dart dan masukkan kode program berikut:
+Setelah quicktype memberikan model untuk response API keys, salinlah model tersebut dengan menekan tombol Copy Code dan masukkan ke dalam file field1_model.dart. Lakukanlah hal yang sama terhadap field 2 dan 3. Jika ketiga model field telah dibuat, masuklah ke dalam file **api_service.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:dio/dio.dart';
-import 'package:mcs_bab_5/models/field1_model.dart';
-import '../models/field2_model.dart';
-import '../models/field3_model.dart';
-
 class ApiService {
   Dio dio = Dio();
 
@@ -205,16 +200,8 @@ Setelah menambahkan gambar, bukalah kembali file pubspec.yaml dan carilah baris 
   <img width="291" height="223" alt="image" src="https://github.com/user-attachments/assets/1f10644e-007a-48c9-8b5d-730408e80bad" />
 </div> <br>
 
-Jika sudah menghilangkan comment tersebut, lakukanlah pub get untuk memperbarui hasil konfigurasi. Jika sudah, bukalah file app_provider.dart dan masukkan kode program berikut:
+Jika sudah menghilangkan comment tersebut, lakukanlah pub get untuk memperbarui hasil konfigurasi. Jika sudah, bukalah file **app_provider.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:mcs_bab_5/models/field1_model.dart';
-import 'package:mcs_bab_5/screens/home_page.dart';
-import 'package:mcs_bab_5/services/api_service.dart';
-import '../models/field2_model.dart';
-import '../models/field3_model.dart';
-
 class AppProvider extends ChangeNotifier {
   TextStyle roboto14Italic = GoogleFonts.roboto(
     fontSize: 14,
@@ -292,13 +279,8 @@ class AppProvider extends ChangeNotifier {
 
 Kode program tersebut berisikan kumpulan deklarasi variabel dan fungsi yang nantinya dapat digunakan secara berulang. Variabel dengan tipe String yang bernama thermoMeterImage, humiditySensorImage, dan soilAnalysisImage adalah variabel untuk menyimpan path dimana gambar disimpan. Variabel dengan nama field1model, field2model, dan field3model adalah variabel yang nantinya menampung nilai return saat function yang berada di class ApiService() bernama getField1(), getField2() dan getField3() dipanggil. Fungsi tersebut akan dijalankan ketika fungsi getTemperature(), getHumidty() dan getSoilMoisture() dipanggil.
 
-Kemudian bukalah file main.dart dan tuliskan kode program berikut:
+Kemudian bukalah file **main.dart** dan tuliskan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_5/providers/app_provider.dart';
-import 'package:mcs_bab_5/screens/splash_screen.dart';
-import 'package:provider/provider.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -331,13 +313,8 @@ class MyApp extends StatelessWidget {
 
 Pada file main.dart terlihat bahwa terdapat pemanggilan terhadap function getTemperature(), getHumidity() dan getSoilMoisture() yang bertujuan agar fungsi tersebut langsung dijalankan bersamaan pada saat aplikasi dijalankan. Hal tersebut juga dapat membuat data yang ingin diambil langsung disajikan tanpa menunggu untuk beberapa saat.
 
-Berikutnya bukalah file splash_screen.dart dan masukkan kode program berikut:
+Berikutnya bukalah file **splash_screen.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_5/providers/app_provider.dart';
-import 'package:mcs_bab_5/screens/home_page.dart';
-import 'package:provider/provider.dart';
-
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -420,10 +397,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
 Kode tersebut merupakan kode yang digunakan untuk membangun halaman splash screen aplikasi yang muncul paling awal pada saat aplikasi dijalankan. Pada kode tersebut, terdapat fungsi void bernama initState() yang memanggil 3 fungsi lain yang telah didefinisikan pada provider, seperti getTemperature(), getHumidity(), dan getSoilMoisture() yang dipajnggila lagi untuk memastikan bahwa data yang ingin diambil benar-benar telah siap. Meskipun saat inisialisasi provider ketigatiga function tersebut sudah dipanggil, hal tersebut tidak dapat menjadi jaminan bahwa function yang dipanggil dapat berjalan.
 
-Berikutnya masuklah ke dalam file custom_read_file.dart dan masukkan kode porgram berikut:
+Berikutnya masuklah ke dalam file **custom_read_file.dart** dan masukkan kode porgram berikut:
 ```dart
-import 'package:flutter/material.dart';
-
 class CustomReadField extends StatelessWidget {
   String result;
   Color borderColor;
@@ -463,13 +438,8 @@ class CustomReadField extends StatelessWidget {
 
 Kode program pada file tersebut digunakan untuk memberikan tampilan yang nantinya dapat digunakan pada halaman utama untuk menampilkan data yang diambil dari Thingspeak. Dengan adanya class CustomReadField() kita dapat memanggil widget dengan layout yang sama, karena kita hanya perlu memanggil class CustomReafField() saja yang nantinya class ini akan meminta constructor yang perlu diisi saat class tersebut dipanggil. Terdapat 3 bagian di dalam constructor yang harus diisi, result adalah untuk menampilkan data dari field channel Thingspeak, borderColor adalah warna yang digunakan untuk border widget yang dibangun dan image untuk menampilkan gambar pada widget tersebut.
 
-Berikutnya masuklah ke dalam file home_page.dart dan masukkan kode program berikut:
+Berikutnya masuklah ke dalam file **home_page.dart** dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_5/providers/app_provider.dart';
-import 'package:mcs_bab_5/widget/custom_read_field.dart';
-import 'package:provider/provider.dart';
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 

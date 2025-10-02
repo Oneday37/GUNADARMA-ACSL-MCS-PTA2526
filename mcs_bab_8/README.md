@@ -24,6 +24,8 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | SOFTWARE YANG DIBUTUHKAN | |
 | --------- | ------------- |
 | Android Studio / Visual Studio Code |
+| Arduino IDE|
+| Postman |
 ***
 
 ### **8.3 MATERI PRAKTIKUM**
@@ -78,8 +80,6 @@ Setelah melakukan pub get, buatlah struktur tree project, seperti yang terlihat 
 
 Berikutnya ketika struktur tree project sudah tersusun seperti pada gambar, masuklah ke dalam file card_bridge_model.dart dan isikan kode program berikut:
 ```dart
-import 'dart:convert';
-
 CardBridgeModel cardBridgeModelFromJson(String str) => CardBridgeModel.fromJson(json.decode(str));
 String cardBridgeModelToJson(CardBridgeModel data) => json.encode(data.toJson());
 
@@ -116,8 +116,6 @@ class Result {
 
 Setelah file tersebut terisikan dengan kode program yang membangun model untuk mendapatkan data API yang dikirimkan melalui RFID, langkah berikutnya adalah membangun model yang akan digunakan untuk mengambil data yang dikirimkan oleh servo. Kode program tersebut dibentuk pada file servo_status_model.dart.
 ```dart
-import 'dart:convert';
-
 ServoStatusModel servoStatusModelFromJson(String str) => ServoStatusModel.fromJson(json.decode(str));
 
 String servoStatusModelToJson(ServoStatusModel data) => json.encode(data.toJson());
@@ -160,9 +158,6 @@ class Result {
 
 Setelah membuat kedua model object dart berdasarkan response API yang diberikan, langkah berikutnya adalah melakukan penulisan kode untuk file card_api_service.dart dan servo_status_service.dart. Berikut merupakan kode yang digunakan untuk membangun service API dari card_bridge_model.dart
 ```dart
-import 'package:dio/dio.dart';
-import 'package:mcs_bab_8/models/card_bridge_model.dart';
-
 class CardApiService {
   Dio dio = Dio();
   String cardBridgeUrl = "https://<ip_address>:<PORT>";
@@ -192,9 +187,6 @@ Kode program tersebut digunakan untuk menghandle bagian RFID. Pada bagian awal c
 
 Selanjutnya masuklah ke dalam file servo_api_status.dart dan tuliskan kode program berikut:
 ```dart
-import 'package:dio/dio.dart';
-import 'package:mcs_bab_8/models/servo_status_model.dart';
-
 class ServoApiService {
   Dio dio = Dio();
   String servoControllerUrl = "https://<ip_address>:<PORT>";
@@ -222,12 +214,6 @@ Kode program tersebut digunakan untuk menghandle bagian servo. Pada bagian awal 
 
 Kemudian masuklah ke dalam file app_provider.dart dan tuliskan kode program berikut ke file tersebut:
 ```dart
-import 'package:flutter/cupertino.dart';
-import 'package:mcs_bab_8/models/card_bridge_model.dart';
-import 'package:mcs_bab_8/models/servo_status_model.dart';
-import 'package:mcs_bab_8/services/card_api_service.dart';
-import 'package:mcs_bab_8/services/servo_api_service.dart';
-
 class AppProvider extends ChangeNotifier{
   ServoStatusModel? servoStatusModel;
   CardBridgeModel? cardBridgeModel;
@@ -267,10 +253,6 @@ class AppProvider extends ChangeNotifier{
 
 Kode program tersebut akan menginisialisasi seluruh atribut, seperti variabel dan fungs yang diperlukan ke dlaam 1 file. Sehingga, kita dapat menggunakannya secara berulang tanpa harus mendefinisikan dari awal. Berikutnya masuklah ke dalam file main.dart dan isikan dengan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_8/providers/app_provider.dart';
-import 'package:mcs_bab_8/screens/home_screen.dart';
-import 'package:provider/provider.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -300,8 +282,6 @@ class MyApp extends StatelessWidget {
 
 Pada file main.dart terlihat bahwa terdapat pemanggilan terhadap class AppProvider() yang bertujuan agar seluruh variabel dan fungsi yang telah didefinisikan pada provider dapat langsung dijalankan bersamaan pada saat aplikasi dijalankan. Selanjutnya, kita akan membuat sebuah class yang di dalamnya berisikan kode program yang akan membangun suatu tombol yang akan digunakan untuk mengontrol servo. Masuklah ke dlaam file custom_servo_button.dart dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-
 class CustomServoButton extends StatelessWidget {
   String textLeftButton;
   String textRightButton;
@@ -364,12 +344,6 @@ Class CustomServoButton() merupakan sebuah class yang akan membentuk tampilan bu
 
 Setelah proses pembuatan button selesai dilakukan, bukalah file home_page.dart dan masukkan kode program berikut:
 ```dart
-import 'package:flutter/material.dart';
-import 'package:mcs_bab_8/provider/app_provider.dart';
-import 'package:mcs_bab_8/widget/custom_servo_button.dart';
-import 'package:provider/provider.dart';
-
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -689,10 +663,10 @@ Setelah proses wiring selesai dilakukan, kembalilah ke software Arduino IDE dan 
 #define SS_PIN  5    // ESP32 pin GPIO5 
 #define RST_PIN 27   // ESP32 pin GPIO27 
 
-const char* ssid = "LAB LANJUT 121";       // SESUAIKAN DENGAN SSID Wi-Fi YANG TERHUBUNG
-const char* password = "12345678"; // SESUAIKAN DENGAN PASSWORD Wi-Fi YANG TERHUBUNG
+const char* ssid = "";       // SESUAIKAN DENGAN SSID Wi-Fi YANG TERHUBUNG
+const char* password = ""; // SESUAIKAN DENGAN PASSWORD Wi-Fi YANG TERHUBUNG
 
-const char* serverURL = "http://192.168.121.185:8081/servo/status";
+const char* serverURL = "http://<IP ADDRESS>:<PORT>/servo/status";
 
 MFRC522 rfid(SS_PIN, RST_PIN);
 Servo myServo;
@@ -747,7 +721,7 @@ void loop() {
 void sendUIDToServer(String uid) {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
-    String url = "http://192.168.121.185:8080/card/input/" + uid;  // SESUAIKAN DENGAN IP DAN PORT
+    String url = "http://<IP ADDRESS>:<PORT>/card/input/" + uid;  // SESUAIKAN DENGAN IP DAN PORT
     http.begin(url);
 
     int httpResponseCode = http.POST("");

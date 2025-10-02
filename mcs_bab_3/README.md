@@ -120,25 +120,45 @@ Berikutnya masuklah ke dalam menu users untuk menambahkan user baru untuk authen
 
 Setelah user baru berhasil dibuat, langkah selanjutnya yang dilakukan adalah melakukan konfigurasi firebase dengan project flutter. Konfigurasi firebase dengan flutter project dilakukan dengan menggunakan Command Line Interface (CLI) yang prosesnya melalui beberapa tahapan, antara lain:
 1.	Pastikan laptop / PC sudah terinstall node.js. Jika laptop / PC belum terinstall node.js, maka harap mengunduhnya terlebih dahulu pada halaman website https://nodejs.org/en.
+```
+node --version
+```
+
 2.	Pastikan path C:\Users<nama user pada perangkat>\AppData\Local\Pub\Cache\bin telah diinput pada bagian path yang ada pada environtment variables.
 3.	Bukalah command prompt (CMD) atau windows powershell.
 4.	Ketikan perintah npm install -g firebase-tools pada terminal yang telah dibuka dan tunggulah hingga proses installasi selesai. Perintah tersebut digunakan untuk menginstall firebase CLI pada perangkat secara global dengan menggunakan npm.
-```npm install -g firebase-tools```
-6.	Bukalah project flutter yang telah dikerjakan pada pertemuan praktikum sebelumnya (praktikum bab 2) dan masuklah ke dalam terminal project tersebut.
-7.	Ketikan perintah firebase login untuk menghubungkan project dengan layanan firebase. Jika baru pertama kali menggunakan firebase dan belum pernah menghubungkan project flutter dengan firebase, maka nanti flutter akan mengarahkan ke sebuah halaman yang meminta akun untuk dihubungkan ke Firebase CLI.
-8.	Setelah berhasil login ke dalam firebase, ketikan perintah firebase projects:list untuk melihat seluruh project yang ada pada akun tersebut.
-```firebase projects:list```
+```
+npm install -g firebase-tools
+```
+
+5.	Bukalah project flutter yang telah dikerjakan pada pertemuan praktikum sebelumnya (praktikum bab 2) dan masuklah ke dalam terminal project tersebut.
+6.	Ketikan perintah firebase login untuk menghubungkan project dengan layanan firebase. Jika baru pertama kali menggunakan firebase dan belum pernah menghubungkan project flutter dengan firebase, maka nanti flutter akan mengarahkan ke sebuah halaman yang meminta akun untuk dihubungkan ke Firebase CLI.
+```
+firebase login
+```
+
+7.	Setelah berhasil login ke dalam firebase, ketikan perintah firebase projects:list untuk melihat seluruh project yang ada pada akun tersebut.
+```
+firebase projects:list
+```
+
 8.	Ketikan perintah dart pub global activate flutterfire_cli untuk menginstall flutterfire cli dan tunggu hingga proses installasi selesai.
-```dart pub global activate flutterfire_cli```
+```dart
+dart pub global activate flutterfire_cli
+```
+
 9.	Setelah proses installasi selesai, ketikan perintah flutterfire configure untuk mengonfigurasikan project flutter ke firebase. Dalam proses ini, terdapat beberapa langkah yang harus diikuti agar proses konfigurasi dapat berjalan dengan baik. Praktikan diharapkan untuk memperhatikan dengan seksama penjelasan yang diberikan oleh PJ yang mengajar.
-```flutterfire configure```
+```
+flutterfire configure
+```
+
 10.	Setelah proses konfigurasi ke firebase telah selesai, pada folder lib project flutter akan muncul sebuah file bernama firebase_options.dart secara otomatis. File tersebut berisikan konfigurasi untuk menghubungkan firebase dengan project Flutter.
 <div align="center">
   <img width="352" height="45" alt="image" src="https://github.com/user-attachments/assets/d45224b9-8158-493d-a394-fa369fc64d8b" />
 </div> <br>
 
 ### **3.4.2.2 Pembuatan Aplikasi**
-Setelah file firebase_options.dart muncul, tambahkan 4 depedencies baru, yakni firebase_core, firebase_auth, provider dan lottie ke dalam file pubspec.yaml pada bagian depedencies. Selain itu, hilangkan komentar pada bagian assets: dan ubahlah path yang ada pada bagian assets: menjadi seperti pada Gambar
+Setelah file firebase_options.dart muncul, tambahkan 4 depedencies baru, yakni firebase_core, firebase_auth, provider dan lottie ke dalam file **pubspec.yaml** pada bagian depedencies. Selain itu, hilangkan komentar pada bagian assets: dan ubahlah path yang ada pada bagian assets: menjadi seperti pada Gambar
 <div align="center">
   <img width="709" height="764" alt="image" src="https://github.com/user-attachments/assets/40db92da-127b-4dc3-80cb-e75cae337d1a" />
 </div> <br>
@@ -148,7 +168,7 @@ Berikutnya tambahkan beberapa file dan folder ke dalam folder lib, sehingga stru
   <img width="342" height="534" alt="image" src="https://github.com/user-attachments/assets/18b61b49-4e66-48b3-9705-d9b931840f93" />
 </div> <br>
 
-Setelah menambahkan beberapa folder dan file ke dalam folder lib, masuklah ke dalam file app_provider.dart yang terdapat dalam folder provider dan masukkanlah kode berikut ke dalamnya.
+Setelah menambahkan beberapa folder dan file ke dalam folder lib, masuklah ke dalam file **app_provider.dart** yang terdapat dalam folder provider dan masukkanlah kode berikut ke dalamnya.
 ```dart
 class AppProvider extends ChangeNotifier {
   // INISIALISASI VARIABEL
@@ -182,16 +202,10 @@ class AppProvider extends ChangeNotifier {
   );
 
   // METHOD LOGIN FIREBASE
-  Future loginToApp(
-    String usernameController,
-    String passwordController,
-  ) async {
+  Future loginToApp(String username, String password) async {
     try {
       UserCredential userCredential = await firebaseAuthentication
-          .signInWithEmailAndPassword(
-            email: usernameController,
-            password: passwordController,
-          );
+          .signInWithEmailAndPassword(email: username, password: password);
       return userCredential;
     } catch (e) {
       throw Exception(e);
@@ -267,7 +281,7 @@ Kemudian pada class tersebut juga terdapat pendefinisian terhadap beberapa metho
 3.	Method validationForm() merupakan method yang digunakan untuk memenangani proses validasi data berdasarkan data yang telah diinput oleh pengguna. Method ini akan memeriksa seluruh field yang ada dan mengirimkan data yang diterima dari masing-masing field ke method loginToApp() untuk diproses oleh firebase.
 4.	Method resetForm() merupakan method yang berisikan beberapa baris kode yang digunakan untuk menghapus dan mengosongkan nilai dari field input dan digunakan juga untuk mereset status validasi dari widget.
 
-Berikutnya bukalah file login_page.dart dan masukkanlah kode program berikut:
+Berikutnya bukalah file **login_page.dart** dan masukkanlah kode program berikut:
 ```dart
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -463,7 +477,8 @@ Halaman login_page.dart berisikan baris kode program yang akan membangun tampila
 Widget ini memiliki properti builder: yang didalamnya terdapat 3 parameter, antara lain context, provider, dan child. Parameter provider merupakan parameter yang merupakan instance dari class provider yang telah dibuat sebelumnya. Pada praktikum ini, parameter tersebut diberi nama sebagai appProvider, sehingga ketika ingin mengakses salah satu variabel atau method yang telah didefinisikan pada class AppProvider() kita hanya cukup memanggil appProvider yang diikuti dengan pemanggilan nama variabel atau method yang ingin digunakan.
 
 Widget ini mengembalikan widget Scaffold() untuk membentuk halamannya dimana widget langsung menggunakan properti body: yang mengembalikan widget Form(). Widget tesebut digunakan untuk membantu kita dalam proses validasi nilai input yang didapatkan dari pemanggilan terhadap widget TextFormField(). Implementasi dari provider pertama kali dapat dilihat pada properti key: dengan pemanggilan terhadap appProvider yang diikuti dengan pemanggilan terhadap variabel formKey yang telah terdefinisikan di dalam class AppProvider(). Penggunaan dari provider lainnya dapat dilihat pada properti controller: yang ada di setiap widget TextFormField, properti suffixIcon yang ada pada widget TextFormField password, dan button untuk login.
-Berikutnya masuklah ke dalam file home_page.dart dan ubahlah kode di dalamnya menggunakan kode program berikut:
+
+Berikutnya masuklah ke dalam file **home_page.dart** dan ubahlah kode di dalamnya menggunakan kode program berikut:
 ```dart
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -570,7 +585,7 @@ class _HomePageState extends State<HomePage> {
 
 Perubahan kode tersebut dilakukan pada 2 bagian, pertama pada bagian pengembalian widget yang awalnya langsung mengembalikan widget Scaffold() dirubah menjadi widget Consumer(), sehingga widget Scaffold() berada di dalam widget Consumer(). Kemudian perubahan kedua terjadi pada bagian widget AppBar() dimana terdapat penambahan properti action: yang berisikan icon berbentuk logout. Icon tersebut nantinya dapat ditekan dan pada saat icon ditekan, maka sistem akan memanggil method logoutApp() dan resetForm() yang tersimpan di dalam class AppProvider. Kedua method tersebut akan membuat pengguna keluar dari akun tersebut dan kembali ke halaman login serta mengosongkan field input yang ada pada halaman login.
 
-Selanjutnya masuklah ke dalam file auth_page_gate.dart dan masukkanlah kode program berikut:
+Selanjutnya masuklah ke dalam file **auth_page_gate.dart** dan masukkanlah kode program berikut:
 ```dart
 class AuthGatePage extends StatelessWidget {
   const AuthGatePage({super.key});
@@ -597,7 +612,7 @@ class AuthGatePage extends StatelessWidget {
 
 Class AuthPageGate merupakan class yang berisikan beberapa baris kode program yang akan mengatur halaman mana yang akan ditampilkan. Class ini mengembalikan widget Consumer() yang di dalamnya terdapat pemanggilan terhadap widget Scaffold(). Pada widget Scaffold() dipanggil properti body: yang mengembalikan widget StreamBuilder() yang di dalamnya terdapat properti stream: yang akan memantau data stream secara terus-menerus, sehingga tampilan UI dari halaman tersebut akan direbuild secara real time jika terdapat data yang berubah. Terdapat 2 kondisi berbeda yang akan ditampilkan oleh aplikasi, yakni kondisi pertama jika pada saat proses stream terdapat data (pengguna telah melakukan login), maka aplikasi akan langsung menampilkan halaman home yang berisikan list dari jenis-jenis kucing. Namun, jika pada saat stream sistem tidak menemukan data (pengguna belum pernah login atau sudah logout), maka tampilan yang akan ditampilkan adalah halaman login.
 
-Berikutnya, masuklah ke dalam file main.dart dan ubahlah kode di dalamnya dengan menggunakan kode program berikut:
+Berikutnya, masuklah ke dalam file **main.dart** dan ubahlah kode di dalamnya dengan menggunakan kode program berikut:
 ```dart
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
