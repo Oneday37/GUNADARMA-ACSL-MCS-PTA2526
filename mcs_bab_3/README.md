@@ -202,16 +202,10 @@ class AppProvider extends ChangeNotifier {
   );
 
   // METHOD LOGIN FIREBASE
-  Future loginToApp(
-    String usernameController,
-    String passwordController,
-  ) async {
+  Future loginToApp(String username, String password) async {
     try {
       UserCredential userCredential = await firebaseAuthentication
-          .signInWithEmailAndPassword(
-            email: usernameController,
-            password: passwordController,
-          );
+          .signInWithEmailAndPassword(email: username, password: password);
       return userCredential;
     } catch (e) {
       throw Exception(e);
