@@ -59,7 +59,7 @@ Sedangkan jika menggunakan provider, maka bussines logic akan dibuat terpisah da
 ### **3.4.1 Tampilan Aplikasi**
 Berikut merupakan tampilan dari aplikasi yang akan dibentuk pada praktikum bab 3.
 <div align="center">
-  <img width="267" height="588" alt="image" src="https://github.com/user-attachments/assets/a0c167a7-3c8c-4b45-92d9-5f14a52ccfdb" />
+  <img width="296" height="658" alt="image" src="https://github.com/user-attachments/assets/a0c167a7-3c8c-4b45-92d9-5f14a52ccfdb" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img width="296" height="658" alt="image" src="https://github.com/user-attachments/assets/cd871cee-54f6-4859-a765-9d4054a26ed4" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
