@@ -15,7 +15,7 @@ class AppProvider extends ChangeNotifier {
 
   Stream getServoStatus() async* {
     while (true) {
-      yield servoStatusModel = await ServoApiService().getServoStatus();
+      servoStatusModel = await ServoApiService().getServoStatus();
       await Future.delayed(const Duration(seconds: 1));
       notifyListeners();
     }

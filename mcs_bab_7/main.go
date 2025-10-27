@@ -24,7 +24,7 @@ var (
 )
 
 func main() {
-	var PORT = ":8081"
+	var PORT = ":49153"
 
 	psqlInfo := fmt.Sprintf(
 		`host=%s port=%d user=%s password=%s dbname=%s sslmode=disable`,

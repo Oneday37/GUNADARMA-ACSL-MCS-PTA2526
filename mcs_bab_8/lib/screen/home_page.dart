@@ -50,15 +50,16 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Servo Status : ", style: const TextStyle(fontSize: 20)),
                   StreamBuilder(
                     stream: appProvider.getServoStatus(),
                     builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Text("-");
-                      } else if (snapshot.hasError) {
-                        return Center(
-                          child: Text("Error => ${snapshot.error}"),
+                      if (snapshot.hasError) {
+                        return Expanded(
+                          child: Center(
+                            child: Text(
+                              "Error to get servo status: ${snapshot.error}",
+                            ),
+                          ),
                         );
                       } else {
                         appProvider.servoStatus = appProvider
@@ -66,7 +67,10 @@ class _HomePageState extends State<HomePage> {
                             .result[0]
                             .srvStatus
                             .toString();
-                        return Text(appProvider.servoStatus);
+                        return Text(
+                          "Servo Status: ${appProvider.servoStatus}",
+                          style: const TextStyle(fontSize: 20),
+                        );
                       }
                     },
                   ),
@@ -95,14 +99,10 @@ class _HomePageState extends State<HomePage> {
                 child: StreamBuilder(
                   stream: appProvider.getUid(),
                   builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
+                    if (snapshot.hasError) {
                       return Center(
                         child: Text("Error to get ID: ${snapshot.error}"),
                       );
-                    } else if (snapshot.data == null || !snapshot.hasData) {
-                      return const Center(child: Text("No data to display"));
                     } else {
                       return ListView.builder(
                         shrinkWrap: true,

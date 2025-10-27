@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AppProvider>(
+        ChangeNotifierProvider<AppProvider>( 
           create: (context) => AppProvider()
             ..getTemperature()
             ..getHumidity()

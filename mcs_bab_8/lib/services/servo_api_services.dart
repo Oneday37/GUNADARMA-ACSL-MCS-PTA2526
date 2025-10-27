@@ -3,7 +3,7 @@ import 'package:mcs_bab_8/models/servo_status_model.dart';
 
 class ServoApiService {
   Dio dio = Dio();
-  String servoControllerUrl = "http://192.168.121.185:8081";
+  String servoControllerUrl = "http://192.168.0.164:49152";
 
   Future<ServoStatusModel> getServoStatus() async {
     try {

@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-ServoStatusModel servoStatusModelFromJson(String str) =>
+ServoStatusModel getServoStatusModelFromJson(String str) =>
     ServoStatusModel.fromJson(json.decode(str));
 
-String servoStatusModelToJson(ServoStatusModel data) =>
+String getServoStatusModelToJson(ServoStatusModel data) =>
     json.encode(data.toJson());
 
 class ServoStatusModel {

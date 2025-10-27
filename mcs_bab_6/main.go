@@ -24,7 +24,7 @@ var (
 )
 
 func main() {
-	var PORT = ":8080"
+	var PORT = ":49152"
 
 	psqlInfo := fmt.Sprintf(
 		`host=%s port=%d user=%s password=%s dbname=%s sslmode=disable`,
@@ -34,7 +34,7 @@ func main() {
 	DB, err = sql.Open("postgres", psqlInfo)
 
 	if err != nil {
-		log.Fatalf("Error Open DB: %v\n", err)
+		log.Fatal("Error Open DB: ", err)
 	}
 
 	database.DBMigrate(DB)
