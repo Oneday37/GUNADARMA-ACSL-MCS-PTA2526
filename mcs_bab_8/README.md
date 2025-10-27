@@ -503,29 +503,34 @@ return Consumer<AppProvider>(
           // ...
 
           Row(
-            children: [
-              Text("Servo Status : ", style: const TextStyle(fontSize: 20)),
-              StreamBuilder(
-                stream: appProvider.getServoStatus(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text("-");
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text("Error => ${snapshot.error}"),
-                    );
-                  } else {
-                    appProvider.servoStatus = appProvider
-                        .servoStatusModel!
-                        .result[0]
-                        .srvStatus
-                        .toString();
-                    return Text(appProvider.servoStatus);
-                  }
-                },
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  StreamBuilder(
+                    stream: appProvider.getServoStatus(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Expanded(
+                          child: Center(
+                            child: Text(
+                              "Error to get servo status: ${snapshot.error}",
+                            ),
+                          ),
+                        );
+                      } else {
+                        appProvider.servoStatus = appProvider
+                            .servoStatusModel!
+                            .result[0]
+                            .srvStatus
+                            .toString();
+                        return Text(
+                          "Servo Status: ${appProvider.servoStatus}",
+                          style: const TextStyle(fontSize: 20),
+                        );
+                      }
+                    },
+                  ),
+                ],
               ),
-            ],
-          ),
 
           // ...
           
@@ -565,53 +570,50 @@ return Consumer<AppProvider>(
           ),
 
           Expanded(
-            child: StreamBuilder(
-              stream: appProvider.getUid(),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text("Error to get ID: ${snapshot.error}"),
-                  );
-                } else if (snapshot.data == null || !snapshot.hasData) {
-                  return const Center(child: Text("No data to display"));
-                } else {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    itemCount: appProvider.cardBridgeModel!.result.length,
-                    itemBuilder: (context, index) {
-                      return Container(
-                        margin: const EdgeInsets.symmetric(
-                          vertical: 10,
-                          horizontal: 40,
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              appProvider.cardBridgeModel!.result[index].id,
-                            ),
-                            GestureDetector(
-                              child: const Icon(Icons.delete),
-                              onTap: () {
-                                appProvider.deleteUid(
-                                  uid: appProvider
-                                      .cardBridgeModel!
-                                      .result[index]
-                                      .id,
-                                );
-                              },),
-                          ],
-                        ),
+                child: StreamBuilder(
+                  stream: appProvider.getUid(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text("Error to get ID: ${snapshot.error}"),
                       );
-                    },
-                  );
-                }
-              },
-            ),
-          ),
+                    } else {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        itemCount: appProvider.cardBridgeModel!.result.length,
+                        itemBuilder: (context, index) {
+                          return Container(
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 10,
+                              horizontal: 40,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  appProvider.cardBridgeModel!.result[index].id,
+                                ),
+                                GestureDetector(
+                                  child: const Icon(Icons.delete),
+                                  onTap: () {
+                                    appProvider.deleteUid(
+                                      uid: appProvider
+                                          .cardBridgeModel!
+                                          .result[index]
+                                          .id,
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    }
+                  },
+                ),
+              ),
         ],
       ),
     );
@@ -634,6 +636,13 @@ Bukalah software Arduino IDE yang telah terinstall pada platform anda dan lakuka
   <img width="827" height="465" alt="image" src="https://github.com/user-attachments/assets/86ec543e-02d9-4b2e-b1c2-6b6e5f69f724" />
 </div> <br>
 
+1. Bukalah software Arduino IDE yang telah terinstall
+2. Bukalah menu File lalu pergi ke menu preferences
+3. Tambahkan URL berikut pada bagian Additional Boards Manager URLs:
+```
+https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+```
+
 <div align="center">
   <img width="827" height="515" alt="image" src="https://github.com/user-attachments/assets/c1099c1b-8a8f-486c-81eb-4c5a8c2e473e" />
 </div> <br>
@@ -653,7 +662,7 @@ Bukalah software Arduino IDE yang telah terinstall pada platform anda dan lakuka
 </div> <br>
 
 Setelah proses wiring selesai dilakukan, kembalilah ke software Arduino IDE dan masukan kode program berikut:
-```dart
+```C++
 #include <WiFi.h>
 #include <HTTPClient.h>
 #include <SPI.h>
