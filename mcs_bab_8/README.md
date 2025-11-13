@@ -26,7 +26,7 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter dan Code editor untuk menjalankan server |
 | Postgre SQL | Database untuk menyimpan data dari RFID dan servo |
 | Arduino IDE | Code editor untuk konfigurasi sensor |
-| Postman | Software untuk mengecek API yang digunakan |
+| Postman | Software untuk pengujian dan pengelolaan data API |
 <br>
 
 | KOMPONEN YANG DIGUNAKAN | |
