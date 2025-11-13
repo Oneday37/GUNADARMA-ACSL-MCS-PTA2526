@@ -3,7 +3,7 @@ import 'package:mcs_bab_8/models/card_bridge_model.dart';
 
 class CardApiService {
   Dio dio = Dio();
-  String cardBridgeUrl = "http://192.168.0.164:49153";
+  String cardBridgeUrl = "http://10.174.175.181:50000"; // IP ADDRESS:PORT
 
   Future<CardBridgeModel> getUid() async {
     try {

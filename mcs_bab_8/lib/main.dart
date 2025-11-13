@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         title: 'mcs bab 8',
         theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
         debugShowCheckedModeBanner: false,
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }

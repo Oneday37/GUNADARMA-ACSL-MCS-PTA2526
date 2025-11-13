@@ -14,8 +14,8 @@ const (
 	host     = "localhost"
 	port     = 5432
 	user     = "postgres"
-	password = "123456"              // SESUAIKAN DENGAN PASSWORD POSTGRE YANG TELAH DIDAFTARKAN
-	dbName   = "praktikum_mcs_bab_7" // SESUAIKAN DENGAN NAMA DATABASE YANG DIBUAT
+	password = "123456"             // SESUAIKAN DENGAN PASSWORD POSTGRE YANG TELAH DIDAFTARKAN
+	dbName   = "training_mcs_bab_7" // SESUAIKAN DENGAN NAMA DATABASE YANG DIBUAT
 )
 
 var (
@@ -24,7 +24,7 @@ var (
 )
 
 func main() {
-	var PORT = ":49153"
+	var PORT = ":50001"
 
 	psqlInfo := fmt.Sprintf(
 		`host=%s port=%d user=%s password=%s dbname=%s sslmode=disable`,

@@ -29,6 +29,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(color: Colors.white),
             ),
             backgroundColor: Color(0xff0B192C),
+            centerTitle: true,
           ),
           body: Column(
             children: [
@@ -57,7 +58,7 @@ class _HomePageState extends State<HomePage> {
                         return Expanded(
                           child: Center(
                             child: Text(
-                              "Error to get servo status: ${snapshot.error}",
+                              "[ERROR]: Connection Error. Failed to get servo status",
                             ),
                           ),
                         );
@@ -101,7 +102,9 @@ class _HomePageState extends State<HomePage> {
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
                       return Center(
-                        child: Text("Error to get ID: ${snapshot.error}"),
+                        child: Text(
+                          "[ERROR]: Connection Error. Failed to get ID",
+                        ),
                       );
                     } else {
                       return ListView.builder(

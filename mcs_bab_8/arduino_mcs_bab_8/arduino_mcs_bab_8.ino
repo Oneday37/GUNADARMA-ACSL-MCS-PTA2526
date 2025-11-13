@@ -7,10 +7,10 @@
 #define SS_PIN  5    // ESP32 pin GPIO5 
 #define RST_PIN 27   // ESP32 pin GPIO27 
 
-const char* ssid = "UGMURO-INET";       // SESUAIKAN DENGAN SSID Wi-Fi YANG TERHUBUNG
-const char* password = "Gepuk15000"; // SESUAIKAN DENGAN PASSWORD Wi-Fi YANG TERHUBUNG
+const char* ssid = "...";       // SESUAIKAN DENGAN SSID Wi-Fi YANG TERHUBUNG
+const char* password = "titiktitiktitik"; // SESUAIKAN DENGAN PASSWORD Wi-Fi YANG TERHUBUNG
 
-const char* serverURL = "http://192.168.100.134:49153/servo/status";
+const char* serverURL = "http://10.174.175.181:50001/servo/status";
 
 MFRC522 rfid(SS_PIN, RST_PIN);
 Servo myServo;
@@ -59,13 +59,13 @@ void loop() {
     }
   }
   checkServoStatus();
-  delay(2000);
+  delay(5000);
 }
 
 void sendUIDToServer(String uid) {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
-    String url = "http://192.168.100.134:49152/card/input/" + uid;  // SESUAIKAN DENGAN IP DAN PORT
+    String url = "http://10.174.175.181:50000/card/input/" + uid;  // SESUAIKAN DENGAN IP DAN PORT
     http.begin(url);
 
     int httpResponseCode = http.POST("");
