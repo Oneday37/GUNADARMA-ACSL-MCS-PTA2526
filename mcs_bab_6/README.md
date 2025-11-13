@@ -131,7 +131,7 @@ import (
 
 //go:embed sql_migrations/*.sql
 var dbMigrations embed.FS
-var dbConnection *sql.DB
+var DbConnection *sql.DB
 
 func DBMigrate(dbParam *sql.DB) {
 	migrations := &migrate.EmbedFileSystemMigrationSource{
@@ -214,6 +214,7 @@ import (
 
 func GetCards(c *gin.Context) {
 	var result gin.H
+
 	card, err := repositories.GetCards(database.DbConnection)
 
 	if err != nil {
@@ -274,6 +275,7 @@ import (
 
 func StartServer() *gin.Engine {
 	router := gin.Default()
+
 	router.GET("/cards", controllers.GetCards)
 	router.POST("/card/input/:id", controllers.InsertCard)
 	router.DELETE("/card/delete/:id", controllers.DeleteCard)
@@ -326,8 +328,8 @@ const (
 	host     = "localhost"
 	port     = 5432
 	user     = "postgres"
-	password = ""                    // SESUAIKAN DENGAN PASSWORD POSTGRE YANG TELAH DIDAFTARKAN
-	dbName   = "praktikum_mcs_bab_6" // SESUAIKAN DENGAN NAMA DATABASE YANG DIBUAT
+	password = ""           // SESUAIKAN DENGAN PASSWORD POSTGRE YANG TELAH DIDAFTARKAN
+	dbName   = "" 			// SESUAIKAN DENGAN NAMA DATABASE YANG DIBUAT
 )
 
 var (
@@ -336,19 +338,23 @@ var (
 )
 
 func main() {
-	var PORT = ":8080"
+	var PORT = ":50000"		// ISI DENGAN PORT BEBAS (DAPAT DICARI DI GOOGLE DENGAN KEYWORD "UNUSED PORT RANGE")
+
 	psqlInfo := fmt.Sprintf(
 		`host=%s port=%d user=%s password=%s dbname=%s sslmode=disable`,
 		host, port, user, password, dbName,
 	)
 
 	DB, err = sql.Open("postgres", psqlInfo)
+
 	if err != nil {
-		log.Fatalf("Error Open DB: %v\n", err)
+		log.Fatal("Error Open DB: ", err)
 	}
 
 	database.DBMigrate(DB)
+
 	defer DB.Close()
+
 	routers.StartServer().Run(PORT)
 	fmt.Printf("Success Connected")
 }
