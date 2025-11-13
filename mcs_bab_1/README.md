@@ -6,7 +6,7 @@ Pembelajaran yang akan dilakukan pada bab ini adalah pembelajaran mendasar menge
 
 
 ### **1.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | --------- | ------------- |
 | Mengetahui dan memahami widget-widget dasar yang ada pada Flutter | Pada bab ini, praktikan diharapkan dapat mengetahui dan memahami widget-widget dasar dalam membangun aplikasi mobile dengan Flutter |
 | Mengetahui cara membuat project baru pada Flutter dan memahami struktur project Flutter | Praktikan diharapkan dapat mengetahui dan memahami cara membuat project Flutter untuk pertama kali dan mengetahui struktur folder yang ada pada Flutter |
@@ -22,9 +22,9 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter |
 ***
 
 ### **1.3 MATERI PRAKTIKUM**
