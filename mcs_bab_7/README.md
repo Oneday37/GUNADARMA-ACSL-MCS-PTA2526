@@ -5,7 +5,7 @@
 Pada praktikum MCS bab 7, praktikan akan membangun RESTFUL API yang digunakan untuk menggerakan servo. RESTFUL API akan melakukan pemantauan terhadap data yang tersimpan pada database. Jika terdapat perubahan data, maka microcontroller akan menghasilkan output untuk menggerakkan servo
 
 ### **7.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | ------ | ------------- |
 | Membangun database dengan bahasa pemrograman Golang | Dalam bab ini, praktikan akan diajarkan cara membuat sebuah database dengan menggunakan bahasa pemrograman Golang   |
 | Memahami cara memantau database dari perubahan kondisi servo | Pada bab ini, database digunakan sebagai media untuk memantau perubahan kondisi servo |
@@ -21,11 +21,11 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Visual Studio Code |
-| Postgre SQL |
-| Postman |
+| Visual Studio Code | Code editor untuk pengembangan server dan migrasi database Golang -> Postgre SQL|
+| Postgre SQL | Database untuk pengelolaan data menggunakan Postman |
+| Postman | Software untuk pengujian dan pengelolaan data API |
 ***
 
 ### **7.3 MATERI PRAKTIKUM**
