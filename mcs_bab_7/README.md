@@ -85,7 +85,7 @@ Setelah membentuk struktur tree project, bukalah file **servo_entity.go** dan ma
 ```go
 package entities
 
-type Status struct {
+type Servo struct {
 	Id        int `json:"id"`
 	SrvStatus int `json:"srv_status"`
 }
@@ -98,7 +98,7 @@ Kemudian, bukalah file **1_initiate.sql** yang tersimpan di dalam folder sql_mig
 -- +migrate Up
 -- +migrate StatementBegin
 
-CREATE TABLE servo (
+CREATE TABLE servo(
     id INTEGER PRIMARY KEY,
     srv_status INTEGER
 );
@@ -118,7 +118,6 @@ import (
 	"database/sql"
 	"embed"
 	"fmt"
-
 	migrate "github.com/rubenv/sql-migrate"
 )
 
@@ -158,13 +157,13 @@ import (
 )
 
 func InitProj(db *sql.DB) (err error) {
-	sql := "INSERT INTO status(id, srv_status) values(1, 0)"
+	sql := "INSERT INTO servo(id, srv_status) values(1, 0)"
 	_, err = db.Query(sql)
 	return err
 }
 
 func GetStatus(db *sql.DB) (result []entities.Servo, err error) {
-	sql := "SELECT * FROM status"
+	sql := "SELECT * FROM servo"
 	rows, err := db.Query(sql)
 
 	if err != nil {
@@ -185,7 +184,7 @@ func GetStatus(db *sql.DB) (result []entities.Servo, err error) {
 }
 
 func UpdateStatus(db *sql.DB, status entities.Servo) (err error) {
-	sql := "UPDATE status SET srv_status = $1 WHERE id = 1"
+	sql := "UPDATE servo SET srv_status = $1 WHERE id = 1"
 	_, err = db.Exec(sql, status.SrvStatus)
 	return
 }
@@ -201,7 +200,6 @@ import (
 	"mcs_bab_7/repositories"
 	"net/http"
 	"strconv"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -255,7 +253,6 @@ package routers
 
 import (
 	"mcs_bab_7/controllers"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -305,7 +302,6 @@ import (
 	"log"
 	"mcs_bab_7/database"
 	"mcs_bab_7/routers"
-
 	_ "github.com/lib/pq"
 )
 
@@ -313,8 +309,8 @@ const (
 	host     = "localhost"
 	port     = 5432
 	user     = "postgres"
-	password = ""              // SESUAIKAN DENGAN PASSWORD POSTGRE YANG TELAH DIDAFTARKAN
-	dbName   = "praktikum_mcs_bab_7" // SESUAIKAN DENGAN NAMA DATABASE YANG DIBUAT
+	password = ""           // SESUAIKAN DENGAN PASSWORD POSTGRE YANG TELAH DIDAFTARKAN
+	dbName   = ""			// SESUAIKAN DENGAN NAMA DATABASE YANG DIBUAT
 )
 
 var (
@@ -323,7 +319,7 @@ var (
 )
 
 func main() {
-	var PORT = ":8080"
+	var PORT = ":50001"		// ISI DENGAN PORT BEBAS (DAPAT DICARI DI GOOGLE DENGAN KEYWORD "UNUSED PORT RANGE")
 
 	psqlInfo := fmt.Sprintf(
 		`host=%s port=%d user=%s password=%s dbname=%s sslmode=disable`,
