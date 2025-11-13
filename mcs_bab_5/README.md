@@ -24,7 +24,7 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 
 | SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter dan Code editor untuk menjalankan server |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter |
 | Postman | Software untuk pengujian dan pengelolaan data API |
 ***
 
