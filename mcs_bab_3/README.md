@@ -6,7 +6,7 @@ Pembelajaran yang akan dilakukan pada bab ini merupakan pembelajaran yang berkai
 
 
 ### **3.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | --------- | ------------- |
 | Mengetahui dan memahami konsep authentication dalam keamanan sebuah aplikasi | Pada bab ini, praktikan diharapkan dapat mengetahui dan memahami konsep serta tujuan dari penggunaan authentication dalam sebuah aplikasi. |
 | Mampu mengimplementasikan konsep authentication ke dalam aplikasi | Setelah mengetahui dan memahami konsep dan tujuan dari penggunaan authentication, praktikan diharapkan dapat menerapkan konsep tersebut ke dalam aplikasi yang telah dibangun pada pertemuan sebelumnya. |
@@ -23,9 +23,9 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter |
 ***
 
 ### **3.3 MATERI PRAKTIKUM**
