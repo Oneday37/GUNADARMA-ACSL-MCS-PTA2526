@@ -6,7 +6,7 @@ Pada praktikum MCS bab 6, praktikan akan belajar tentang bagaimana caranya memba
 
 
 ### **6.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | ------ | ------------- |
 | Memberikan penjelasan tentang bagaimana pengguna terhubung ke server. | Memberikan gambaran umum mengenai alur saat user melakukan koneksi ke dalam server |
 | Membangun database dengan bahasa pemrograman Golang | Dalam bab ini, praktikan akan diajarkan cara membuat sebuah database dengan menggunakan bahasa pemrograman Golang |
@@ -23,11 +23,11 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Visual Studio Code |
-| Postgre SQL |
-| Postman |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter |
+| Postgre SQL | Database untuk menyimpan data dari RFID dan servo |
+| Postman | Software untuk pengujian dan pengelolaan data API |
 ***
 
 ### **6.3 MATERI PRAKTIKUM**
