@@ -6,7 +6,7 @@ Pada praktikum MCS bab 5, praktikan akan belajar membuat sebuah aplikasi yang te
 
 
 ### **5.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | --------- | ------------- |
 | Memperkenalkan Thingspeak | Pada bab ini, praktikan akan diberikan gambaran singkat mengenai Thingspeak |
 | Mampu menghubungkan aplikasi yang dibangun dengan Thingspeak | Pada bab ini, praktikan akan membangun sebuah aplikasi yang nantinya akan dihubungkan dengan Thingspeak |
