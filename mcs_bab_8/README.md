@@ -5,7 +5,7 @@
 Pada praktikum MCS bab 8, praktikan akan membangun sebuah aplikasi yang dapat mengontrol servo dan melihat data id kartu yang masuk ke database melalui sensor Radio Frequency Identification (RFID). Agar dapat mengontrol servo dan membaca id kartu yang masuk, kita akan mengonsumsi data API yang telah dibuat pada pertemuan praktikum bab 6 dan bab 7.
 
 ### **8.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | --------- | ------------- |
 | Mengetahui cara mengontrol servo menggunakan kartu RFID | Pada bab ini, praktikan akan dijelaskan mengenai bagaimana cara untuk menggerakan servo menggunakan kartu RFID |
 | Memahami cara memasangkan id kartu dengan database | Bab ini akan menggunakan kartu RFID yang di daftarkan ke database untuk memantau perubahan kondisi servo |
@@ -21,18 +21,28 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code |
-| Arduino IDE|
-| Postman |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter dan Code editor untuk menjalankan server |
+| Postgre SQL | Database untuk menyimpan data dari RFID dan servo |
+| Arduino IDE | Code editor untuk konfigurasi sensor |
+| Postman | Software untuk mengecek API yang digunakan |
+<br>
+
+| KOMPONEN YANG DIGUNAKAN | |
+| --------- | ------------- |
+| ESP32 | 
+| RFID-RC522 Module |
+| Motor Servo |
+| Kabel Jumper |
+| Kabel Upload Micro USB |
 ***
 
 ### **8.3 MATERI PRAKTIKUM**
 Pada pertemuan sebelumnya, kita telah membuat 2 database dengan beberapa route endpoint. Database dan endpoint yang dibuat pada bab 6 merupakan endpoint untuk menangani proses pembacaan data kartu yang masuk ke database melalui RFID. Sedangkan, database dan endpoint pada bab 7 digunakan untuk mengontrol servo.
 * _Endpoint_ yang digunakan pada bab 6
 
-| Endpoint | Penggunaan |
+| ENDPOINT | PENGGUNAAN |
 | -------- | ---------- |
 | /cards | Digunakan untuk menampilkan seluruh data yang ada dengan method API yang digunakan adalah method GET. |
 | /card/input/:id | Digunakan untuk menginput data baru ke dalam database dengan method API yang digunakan adalah method POST. Untuk menginput data, variabel id pada endpoint diganti dengan data yang diinginkan. |
@@ -40,7 +50,7 @@ Pada pertemuan sebelumnya, kita telah membuat 2 database dengan beberapa route e
 
 * _Endpoint_ yang digunakan pada bab 7
 
-| Endpoint | Penggunaan |
+| ENDPOINT | PENGGUNAAN |
 | -------- | ---------- |
 | /servo/init-proj | Digunakan untuk menginisialisasi data awal dengan method API yang digunakan adalah method POST |
 | /servo/status | Digunakan untuk menampilkan seluruh data yang ada dengan menggunakan methodm GET. |
@@ -78,20 +88,25 @@ Setelah melakukan pub get, buatlah struktur tree project, seperti yang terlihat 
   <img width="373" height="480" alt="image" src="https://github.com/user-attachments/assets/5ca8cac9-de9b-4a6f-9ab5-709bbc86d38d" />
 </div> <br>
 
-Berikutnya ketika struktur tree project sudah tersusun seperti pada gambar, masuklah ke dalam file card_bridge_model.dart dan isikan kode program berikut:
+Berikutnya ketika struktur tree project sudah tersusun seperti pada gambar, masuklah ke dalam file **card_bridge_model.dart** dan isikan kode program berikut:
 ```dart
-CardBridgeModel cardBridgeModelFromJson(String str) => CardBridgeModel.fromJson(json.decode(str));
-String cardBridgeModelToJson(CardBridgeModel data) => json.encode(data.toJson());
+CardBridgeModel cardBridgeModelFromJson(String str) =>
+    CardBridgeModel.fromJson(json.decode(str));
+
+String cardBridgeModelToJson(CardBridgeModel data) =>
+    json.encode(data.toJson());
 
 class CardBridgeModel {
   List<Result> result;
-  CardBridgeModel({
-    required this.result,
-  });
 
-  factory CardBridgeModel.fromJson(Map<String, dynamic> json) => CardBridgeModel(
-    result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
-  );
+  CardBridgeModel({required this.result});
+
+  factory CardBridgeModel.fromJson(Map<String, dynamic> json) =>
+      CardBridgeModel(
+        result: List<Result>.from(
+          json["result"].map((x) => Result.fromJson(x)),
+        ),
+      );
 
   Map<String, dynamic> toJson() => {
     "result": List<dynamic>.from(result.map((x) => x.toJson())),
@@ -100,35 +115,34 @@ class CardBridgeModel {
 
 class Result {
   String id;
-  Result({
-    required this.id,
-  });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
-    id: json["id"],
-  );
+  Result({required this.id});
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-  };
+  factory Result.fromJson(Map<String, dynamic> json) => Result(id: json["id"]);
+
+  Map<String, dynamic> toJson() => {"id": id};
 }
 ```
 
-Setelah file tersebut terisikan dengan kode program yang membangun model untuk mendapatkan data API yang dikirimkan melalui RFID, langkah berikutnya adalah membangun model yang akan digunakan untuk mengambil data yang dikirimkan oleh servo. Kode program tersebut dibentuk pada file servo_status_model.dart.
+Setelah file tersebut terisikan dengan kode program yang membangun model untuk mendapatkan data API yang dikirimkan melalui RFID, langkah berikutnya adalah membangun model yang akan digunakan untuk mengambil data yang dikirimkan oleh servo. Kode program tersebut dibentuk pada file **servo_status_model.dart**.
 ```dart
-ServoStatusModel servoStatusModelFromJson(String str) => ServoStatusModel.fromJson(json.decode(str));
+ServoStatusModel getServoStatusModelFromJson(String str) =>
+    ServoStatusModel.fromJson(json.decode(str));
 
-String servoStatusModelToJson(ServoStatusModel data) => json.encode(data.toJson());
+String getServoStatusModelToJson(ServoStatusModel data) =>
+    json.encode(data.toJson());
 
 class ServoStatusModel {
   List<Result> result;
-  ServoStatusModel({
-    required this.result,
-  });
 
-  factory ServoStatusModel.fromJson(Map<String, dynamic> json) => ServoStatusModel(
-    result: List<Result>.from(json["result"].map((x) => Result.fromJson(x))),
-  );
+  ServoStatusModel({required this.result});
+
+  factory ServoStatusModel.fromJson(Map<String, dynamic> json) =>
+      ServoStatusModel(
+        result: List<Result>.from(
+          json["result"].map((x) => Result.fromJson(x)),
+        ),
+      );
 
   Map<String, dynamic> toJson() => {
     "result": List<dynamic>.from(result.map((x) => x.toJson())),
@@ -139,28 +153,20 @@ class Result {
   int id;
   int srvStatus;
 
-  Result({
-    required this.id,
-    required this.srvStatus,
-  });
+  Result({required this.id, required this.srvStatus});
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
-    id: json["id"],
-    srvStatus: json["srv_status"],
-  );
+  factory Result.fromJson(Map<String, dynamic> json) =>
+      Result(id: json["id"], srvStatus: json["srv_status"]);
 
-  Map<String, dynamic> toJson() => {
-    "id": id,
-    "srv_status": srvStatus,
-  };
+  Map<String, dynamic> toJson() => {"id": id, "srv_status": srvStatus};
 }
 ```
 
-Setelah membuat kedua model object dart berdasarkan response API yang diberikan, langkah berikutnya adalah melakukan penulisan kode untuk file card_api_service.dart dan servo_status_service.dart. Berikut merupakan kode yang digunakan untuk membangun service API dari card_bridge_model.dart
+Setelah membuat kedua model object dart berdasarkan response API yang diberikan, langkah berikutnya adalah melakukan penulisan kode untuk file **card_api_service.dart** dan servo_status_service.dart. Berikut merupakan kode yang digunakan untuk membangun service API dari card_bridge_model.dart
 ```dart
 class CardApiService {
   Dio dio = Dio();
-  String cardBridgeUrl = "https://<ip_address>:<PORT>";
+  String cardBridgeUrl = "https://<ip_address>:<PORT>";      // SESUAIKAN DENGAN IP PC DAN **PORT** YANG DIGUNAKAN PADA BAB 6
 
   Future<CardBridgeModel> getUid() async {
     try {
@@ -185,11 +191,11 @@ class CardApiService {
 
 Kode program tersebut digunakan untuk menghandle bagian RFID. Pada bagian awal class tersebut, didefinisikan variabel cardBridgeUrl yang berisikan url yang tersusun dari ip address dan port yang telah ditentukan. Kemudian, terdapat 2 fungsi yang didefinisikan, yakni fungsi getUid() yang digunakan untuk membaca data id kartu yang tersimpan di dalam database dan fungsi deleteCard() yang digunakan untuk menghapus data id kartu dari database.
 
-Selanjutnya masuklah ke dalam file servo_api_status.dart dan tuliskan kode program berikut:
+Selanjutnya masuklah ke dalam file **servo_api_service.dart** dan tuliskan kode program berikut:
 ```dart
 class ServoApiService {
   Dio dio = Dio();
-  String servoControllerUrl = "https://<ip_address>:<PORT>";
+  String servoControllerUrl = "https://<ip_address>:<PORT>";      // SESUAIKAN DENGAN IP PC DAN **PORT** YANG DIGUNAKAN PADA BAB 7
 
   Future<ServoStatusModel> getServoStatus() async{
     try{
@@ -212,46 +218,46 @@ class ServoApiService {
 
 Kode program tersebut digunakan untuk menghandle bagian servo. Pada bagian awal class tersebut, didefinisikan variabel servoControllerUrl yang berisikan url yang tersusun dari ip address dan port yang telah ditentukan. Kemudian, terdapat 2 fungsi yang didefinisikan, yakni fungsi getServoStatus() yang digunakan untuk membaca status dari servo dan fungsi writeServoStatus() yang digunakan untuk menggerakan servo.
 
-Kemudian masuklah ke dalam file app_provider.dart dan tuliskan kode program berikut ke file tersebut:
+Kemudian masuklah ke dalam file **app_provider.dart** dan tuliskan kode program berikut ke file tersebut:
 ```dart
-class AppProvider extends ChangeNotifier{
+class AppProvider extends ChangeNotifier {
   ServoStatusModel? servoStatusModel;
   CardBridgeModel? cardBridgeModel;
   String servoStatus = "";
   String textLeftButton = "Set Servo to 0";
-  String textRightButton= "Set Servo to 1";
+  String textRightButton = "Set Servo to 1";
   Color colorLeftButton = const Color(0xffFF6500);
   Color colorRightButton = const Color(0xff1E3E62);
 
-  Stream getServoStatus() async*{
-    while(true){
-      yield servoStatusModel = await ServoApiService().getServoStatus();
+  Stream getServoStatus() async* {
+    while (true) {
+      servoStatusModel = await ServoApiService().getServoStatus();
       await Future.delayed(const Duration(seconds: 1));
       notifyListeners();
     }
   }
 
-  Future changeServoStatus({required String status}) async{
+  Future changeServoStatus({required String status}) async {
     await ServoApiService().writeServoStatus(status: status);
     notifyListeners();
   }
 
-  Stream getUid() async*{
-    while(true){
+  Stream getUid() async* {
+    while (true) {
       yield cardBridgeModel = await CardApiService().getUid();
       await Future.delayed(const Duration(seconds: 2));
       notifyListeners();
     }
   }
 
-  Future deleteUid({required String uid}) async{
+  Future deleteUid({required String uid}) async {
     await CardApiService().deleteCard(idCard: uid);
     notifyListeners();
   }
 }
 ```
 
-Kode program tersebut akan menginisialisasi seluruh atribut, seperti variabel dan fungs yang diperlukan ke dlaam 1 file. Sehingga, kita dapat menggunakannya secara berulang tanpa harus mendefinisikan dari awal. Berikutnya masuklah ke dalam file main.dart dan isikan dengan kode program berikut:
+Kode program tersebut akan menginisialisasi seluruh atribut, seperti variabel dan fungs yang diperlukan ke dalam 1 file. Sehingga, kita dapat menggunakannya secara berulang tanpa harus mendefinisikan dari awal. Berikutnya masuklah ke dalam file **main.dart** dan isikan dengan kode program berikut:
 ```dart
 void main() {
   runApp(const MyApp());
@@ -263,17 +269,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => AppProvider()),
-      ],
+      providers: [ChangeNotifierProvider(create: (_) => AppProvider())],
       child: MaterialApp(
-        title: 'MCS BAB 8,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-          useMaterial3: true
-        ),
+        title: 'MCS BAB 8',
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(),
+        home: const HomePage(),
       ),
     );
   }
@@ -370,6 +370,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(color: Colors.white),
             ),
             backgroundColor: Color(0xff0B192C),
+            centerTitle: true,
           ),
           body: Column(
             children: [
@@ -389,16 +390,18 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 30),
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Servo Status : ", style: const TextStyle(fontSize: 20)),
                   StreamBuilder(
                     stream: appProvider.getServoStatus(),
                     builder: (context, snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return Text("-");
-                      } else if (snapshot.hasError) {
-                        return Center(
-                          child: Text("Error => ${snapshot.error}"),
+                      if (snapshot.hasError) {
+                        return Expanded(
+                          child: Center(
+                            child: Text(
+                              "[ERROR]: Connection Error. Failed to get servo status",
+                            ),
+                          ),
                         );
                       } else {
                         appProvider.servoStatus = appProvider
@@ -406,7 +409,10 @@ class _HomePageState extends State<HomePage> {
                             .result[0]
                             .srvStatus
                             .toString();
-                        return Text(appProvider.servoStatus);
+                        return Text(
+                          "Servo Status: ${appProvider.servoStatus}",
+                          style: const TextStyle(fontSize: 20),
+                        );
                       }
                     },
                   ),
@@ -435,14 +441,12 @@ class _HomePageState extends State<HomePage> {
                 child: StreamBuilder(
                   stream: appProvider.getUid(),
                   builder: (context, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
+                    if (snapshot.hasError) {
                       return Center(
-                        child: Text("Error to get ID: ${snapshot.error}"),
+                        child: Text(
+                          "[ERROR]: Connection Error. Failed to get ID",
+                        ),
                       );
-                    } else if (snapshot.data == null || !snapshot.hasData) {
-                      return const Center(child: Text("No data to display"));
                     } else {
                       return ListView.builder(
                         shrinkWrap: true,
@@ -489,7 +493,7 @@ class _HomePageState extends State<HomePage> {
 }
 ```
 
-Pada kode program tersebut, terdapat widget StreamBuilder() yang digunakan. Widget tersebut umumnya digunakan ketika kita ingin membuat sebuah aplikasi yang menampilkan data secara real time. Penggunaan StreamBuilder() digunakan dalam 2 kondisi, yakni kondisi untuk menghandle status servo dan kondisi untuk menghandle data id kartu. 
+Pada kode program tersebut, terdapat widget StreamBuilder() yang digunakan. Widget tersebut umumnya digunakan ketika kita ingin membuat sebuah aplikasi yang menampilkan data secara real time. Penggunaan **StreamBuilder()** digunakan dalam 2 kondisi, yakni kondisi untuk menghandle status servo dan kondisi untuk menghandle data id kartu. 
 ```dart
 return Consumer<AppProvider>(
   builder: (context, appProvider, child) {
@@ -512,7 +516,7 @@ return Consumer<AppProvider>(
                         return Expanded(
                           child: Center(
                             child: Text(
-                              "Error to get servo status: ${snapshot.error}",
+                              "[ERROR]: Connection Error. Failed to get servo status",
                             ),
                           ),
                         );
@@ -575,7 +579,7 @@ return Consumer<AppProvider>(
                   builder: (context, snapshot) {
                     if (snapshot.hasError) {
                       return Center(
-                        child: Text("Error to get ID: ${snapshot.error}"),
+                        child: Text("[ERROR]: Connection Error. Failed to get ID"),
                       );
                     } else {
                       return ListView.builder(
@@ -647,6 +651,7 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
   <img width="827" height="515" alt="image" src="https://github.com/user-attachments/assets/c1099c1b-8a8f-486c-81eb-4c5a8c2e473e" />
 </div> <br>
 
+4. Lakukan installasi terhadap **Boards Manager ESP32** pada software Arduino IDE
 <div align="center">
   <img width="827" height="465" alt="image" src="https://github.com/user-attachments/assets/08e17ba5-5a95-4f61-a18e-4d8181e4bf93" />
 </div> <br>
@@ -656,6 +661,17 @@ https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32
   <p style="text-align:center;">Skematik Rangkaian</p>
 </div> <br>
 
+4. Lakukan installasi terhadap beberapa library yang dibutuhkan pada software Arduino IDE:
+
+| LIBRARY | FUNGSI |
+| --------- | ------------- |
+| WiFi | Digunakan untuk koneksi Wi-Fi |
+| HTTPClient | Digunakan untuk mengirim koneksi HTTP request ke server |
+| SPI | Digunakan untuk proses komunikasi dengan modul RFID-RC522 |
+| MFRC522 | Digunakan untuk membaca tag RFID / NFC |
+| ESP32Servo | Digunakan untuk mengontrol pergerakan dari motor servo |
+<br>
+5. Rangkailah sensor-sensor sesuai dengan skematik berikut
 <div align="center">
   <img width="584" height="296" alt="image" src="https://github.com/user-attachments/assets/1ca18392-3dc7-4d37-94bd-5a215214e03a" />
   <p style="text-align:center;">Pin Servo dan ESP-32</p>
@@ -672,10 +688,10 @@ Setelah proses wiring selesai dilakukan, kembalilah ke software Arduino IDE dan 
 #define SS_PIN  5    // ESP32 pin GPIO5 
 #define RST_PIN 27   // ESP32 pin GPIO27 
 
-const char* ssid = "";       // SESUAIKAN DENGAN SSID Wi-Fi YANG TERHUBUNG
-const char* password = ""; // SESUAIKAN DENGAN PASSWORD Wi-Fi YANG TERHUBUNG
+const char* ssid = "";          // SESUAIKAN DENGAN SSID Wi-Fi YANG TERHUBUNG
+const char* password = "";      // SESUAIKAN DENGAN PASSWORD Wi-Fi YANG TERHUBUNG
 
-const char* serverURL = "http://<IP ADDRESS>:<PORT>/servo/status";
+const char* serverURL = "http://<IP ADDRESS>:<PORT>/servo/status";    // GUNAKANLAH IP DAN PORT YANG TELAH DIDEFINISIKAN PADA FILE servo_api_status.dart
 
 MFRC522 rfid(SS_PIN, RST_PIN);
 Servo myServo;
@@ -684,7 +700,7 @@ void setup() {
   Serial.begin(115200);
   myServo.attach(12);
 
-  WiFi.begin(ssid, password); // CONNECT TO Wi-Fi
+  WiFi.begin(ssid, password);
   Serial.print("Connecting to WiFi");
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
@@ -699,7 +715,6 @@ void setup() {
 }
 
 void loop() {
-  // Check for RFID tag
   if (rfid.PICC_IsNewCardPresent()) {
     if (rfid.PICC_ReadCardSerial()) {
       MFRC522::PICC_Type piccType = rfid.PICC_GetType(rfid.uid.sak);
@@ -730,7 +745,7 @@ void loop() {
 void sendUIDToServer(String uid) {
   if (WiFi.status() == WL_CONNECTED) {
     HTTPClient http;
-    String url = "http://<IP ADDRESS>:<PORT>/card/input/" + uid;  // SESUAIKAN DENGAN IP DAN PORT
+    String url = "http://<IP ADDRESS>:<PORT>/card/input/" + uid;      // GUNAKANLAH IP DAN PORT YANG TELAH DIDEFINISIKAN PADA FILE card_api_status.dart
     http.begin(url);
 
     int httpResponseCode = http.POST("");
