@@ -25,8 +25,8 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 
 | SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter |
-| Postgre SQL | Database untuk menyimpan data dari RFID dan servo |
+| Visual Studio Code | Code editor untuk pengembangan server dan migrasi database Golang -> Postgre SQL|
+| Postgre SQL | Database untuk pengelolaan data menggunakan Postman |
 | Postman | Software untuk pengujian dan pengelolaan data API |
 ***
 
