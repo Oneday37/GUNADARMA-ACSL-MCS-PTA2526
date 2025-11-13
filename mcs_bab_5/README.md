@@ -22,9 +22,10 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter dan Code editor untuk menjalankan server |
+| Postman | Software untuk pengujian dan pengelolaan data API |
 ***
 
 ### **5.3 MATERI PRAKTIKUM**
