@@ -1,4 +1,4 @@
-# **PRAKTIKUM MCS BAB 2**
+<img width="1032" height="456" alt="image" src="https://github.com/user-attachments/assets/406c62a7-6d3a-44cc-a044-06bcb4c814c8" /># **PRAKTIKUM MCS BAB 2**
 
 ## DINAMIS UI
 ***
@@ -6,7 +6,7 @@ Pembelajaran yang akan dilakukan pada bab ini merupakan pembelajaran yang diting
 
 
 ### **2.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | --------- | ------------- |
 | Mengetahui dan memahami bagaimana caranya membuat aplikasi dapat digulir | Pada bab ini, praktikan akan diajarkan tentang widget baru pada Flutter yang dapat membuat halaman dapat digulir, yakni ListView() dan turunannya, yaitu ListView.builder() |
 | Membuat dan memanggil data dummy | Dalam bab ini, praktikan akan diajarkan bagaimana caranya membuat sebuah list yang berisikan data dummy dan cara memanggil data dummy tersebut ke tampilan aplikasi |
@@ -22,9 +22,9 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter |
 ***
 
 ### **2.3 MATERI PRAKTIKUM**
