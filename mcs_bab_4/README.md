@@ -6,7 +6,7 @@ Application Programming Interface (API) adalah cara agar sebuah perangkat lunak 
 
 
 ### **4.1 TUJUAN PRAKTIKUM**
-| Tujuan | Penjelasan |
+| TUJUAN | PENJELASAN |
 | --------- | ------------- |
 | Mengetahui dan memahami konsep dasar dari application programming interface | Pada bab ini, praktikan akan diharapkan dapat mengetahui dan memahami konsep dasar application programming interface (API) |
 | Mampu memanggil data pada API ke dalam aplikasi | Pada bab ini, praktikan akan diajarkan bagaimana caranya mengambil data melalui API dan menampilkannya pada aplikasi. |
@@ -22,9 +22,9 @@ Disarankan praktikan menggunakan hardware dan software sesuai pada dokumentasi i
 | PC / LAPTOP STORAGE | ≥ 10 GB |
 <br>
 
-| SOFTWARE YANG DIBUTUHKAN | |
+| SOFTWARE YANG DIBUTUHKAN | PENGGUNAAN |
 | --------- | ------------- |
-| Android Studio / Visual Studio Code |
+| Android Studio / Visual Studio Code | Code editor untuk pengembangan aplikasi menggunakan Flutter |
 ***
 
 ### **4.3 MATERI PRAKTIKUM**
