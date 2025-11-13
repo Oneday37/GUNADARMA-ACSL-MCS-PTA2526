@@ -1,4 +1,4 @@
-<img width="1032" height="456" alt="image" src="https://github.com/user-attachments/assets/406c62a7-6d3a-44cc-a044-06bcb4c814c8" /># **PRAKTIKUM MCS BAB 2**
+# **PRAKTIKUM MCS BAB 2**
 
 ## DINAMIS UI
 ***
